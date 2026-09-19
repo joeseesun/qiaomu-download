@@ -1,0 +1,37 @@
+{
+  "schema_version": "2.0.0-qiaomu-lite",
+  "generated_at": "2026-09-19",
+  "package": {
+    "name": "qiaomu-download",
+    "version": "1.0.0",
+    "owner": "向阳乔木",
+    "maturity_tier": "governed",
+    "lifecycle_stage": "production-candidate",
+    "upstream_inspiration": "https://github.com/yt-dlp/yt-dlp"
+  },
+  "intent": {
+    "job_to_be_done": "Download or inspect one authorized online video URL and return verified local artifacts.",
+    "inputs": ["one HTTPS media URL", "bounded output preferences"],
+    "outputs": ["verified media", "subtitles", "metadata"],
+    "exclusions": ["DRM bypass", "playlists", "WeChat UI automation"]
+  },
+  "triggers": {
+    "should_trigger": 5,
+    "should_not_trigger": 4,
+    "near_neighbor": 3
+  },
+  "workflow": {
+    "compact_workflow": ["doctor --upgrade", "validate and route", "public metadata", "optional Cookie fallback", "download", "ffprobe", "absolute-path report"],
+    "gate_ladder": ["static", "unit", "trigger", "provider", "media verification", "release"],
+    "output_contract": ["final JSON", "ok true", "absolute paths", "codec duration and size evidence"]
+  },
+  "portability": {
+    "canonical_format": "agent-skills",
+    "adapter_targets": ["openai", "claude", "generic", "agent-skills-compatible"]
+  },
+  "evidence_boundary": {
+    "generated_reports_are_evidence": true,
+    "planned_work_is_evidence": false,
+    "public_claim_policy": "claim only what validation and provider-backed evidence support"
+  }
+}

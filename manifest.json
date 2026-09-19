@@ -1,0 +1,36 @@
+{
+  "name": "qiaomu-download",
+  "version": "1.0.0",
+  "owner": "向阳乔木",
+  "updated_at": "2026-09-19",
+  "status": "release-candidate",
+  "maturity_tier": "governed",
+  "lifecycle_stage": "production-candidate",
+  "license": "MIT",
+  "entrypoint": "scripts/download.py",
+  "runtime": "python>=3.10",
+  "upstream_inspiration": "https://github.com/yt-dlp/yt-dlp",
+  "dependencies": ["yt-dlp", "ffmpeg", "ffprobe"],
+  "platforms": ["youtube", "bilibili", "x", "generic-yt-dlp"],
+  "intent": {
+    "job_to_be_done": "Download or inspect one authorized online video URL and return verified local artifacts.",
+    "target_users": ["Qiaomu operator", "public skill installer"],
+    "inputs": ["one HTTPS media URL", "optional quality, subtitle language, cookie, and output preferences"],
+    "outputs": ["verified video or MP3", "downloaded subtitles", "structured metadata"],
+    "exclusions": ["DRM bypass", "access-control bypass", "unbounded playlists", "silent credential export", "WeChat UI automation"]
+  },
+  "qiaomu_defaults": {
+    "copyright": "Copyright (c) 向阳乔木",
+    "x": "https://x.com/vista8",
+    "github": "https://github.com/joeseesun/"
+  },
+  "release_gates": [
+    "package validation",
+    "trigger evaluation",
+    "secret scan",
+    "clean local install proof",
+    "YouTube Bilibili and X provider probes",
+    "verified X media download proof",
+    "human security review"
+  ]
+}

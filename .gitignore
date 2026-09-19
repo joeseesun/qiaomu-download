@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*.part
+*.ytdl
+.DS_Store
+reports/runtime-*.json

@@ -1,0 +1,47 @@
+interface:
+  display_name: "乔木通用视频下载"
+  short_description: "下载并验证 YouTube、B站、X 等在线视频"
+  default_prompt: "Use $qiaomu-download when I explicitly ask to download or save one online video, extract MP3/audio, fetch subtitles, inspect media metadata, or update yt-dlp for a YouTube, Bilibili, X/Twitter, Vimeo, TikTok, Instagram, Facebook, Twitch, Reddit, or other yt-dlp-supported URL. Run doctor --upgrade once at the start of a new task, then use the requested mode without asking again when intent is clear. Use public extraction first and local browser cookies only after public extraction fails. Keep playlists and overwrites disabled, wait for final JSON, require ffprobe verification before reporting a media download as complete, and return absolute paths. Route weixin.qq.com/sph links to qiaomu-wx-video and never automate the WeChat client or embedded pages."
+  examples:
+    - "下载这个 X 视频：https://x.com/user/status/123"
+    - "把这个 B 站视频保存成 1080p"
+    - "提取这个 YouTube 视频的 MP3"
+    - "下载这个视频的中英文字幕"
+compatibility:
+  canonical_format: "agent-skills"
+  adapter_targets:
+    - "openai"
+    - "claude"
+    - "generic"
+    - "agent-skills-compatible"
+  activation:
+    mode: "automatic-or-manual"
+    paths: []
+  execution:
+    context: "local-machine"
+    shell: "python3 plus yt-dlp, ffmpeg, and ffprobe"
+  trust:
+    source_tier: "local-installed-cli"
+    remote_inline_execution: "forbid"
+    browser_cookies: "public-first-local-fallback"
+    generated_public_claims: "evidence-bound"
+  permissions:
+    network: "target media provider and official yt-dlp release API"
+    file_write: "user-selected output directory"
+    subprocess: "yt-dlp, ffmpeg, ffprobe, and detected package manager for upgrades"
+    interactive: "may be required by the OS when a browser cookie store is protected"
+  degradation:
+    no_network: "cannot inspect or download"
+    no_ytdlp: "dependency error with installation guidance"
+    no_ffmpeg: "metadata only; no verified media output"
+    no_browser_cookie: "public resources only"
+    provider_change: "upgrade yt-dlp and retry"
+gates:
+  governed:
+    - "one public or user-authorized HTTPS media URL"
+    - "no playlist and no overwrite"
+    - "public-first cookie policy"
+    - "ffprobe verification"
+    - "absolute output paths"
+    - "official stable yt-dlp update check"
+    - "WeChat Channels isolation without UI automation"

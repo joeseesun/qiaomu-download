@@ -1,0 +1,1711 @@
+{
+  "ok": true,
+  "complete": true,
+  "researched_at": "2026-09-19",
+  "queries": [
+    "universal video downloader yt-dlp",
+    "download YouTube Bilibili X video",
+    "media download agent skill"
+  ],
+  "metric_semantics": {
+    "skills_sh_installs": "ecosystem install telemetry; not ratings or correctness",
+    "skillsmp_repo_stars": "GitHub repository stars; not installs, ratings, or skill-specific quality",
+    "cross_catalog_score": "not calculated; metrics remain separate"
+  },
+  "query_runs": [
+    {
+      "query": "universal video downloader yt-dlp",
+      "skills_sh": "ok",
+      "skillsmp": "ok",
+      "skills_sh_candidates": 18,
+      "skillsmp_candidates": 9
+    },
+    {
+      "query": "download YouTube Bilibili X video",
+      "skills_sh": "ok",
+      "skillsmp": "ok",
+      "skills_sh_candidates": 14,
+      "skillsmp_candidates": 10
+    },
+    {
+      "query": "media download agent skill",
+      "skills_sh": "ok",
+      "skillsmp": "ok",
+      "skills_sh_candidates": 17,
+      "skillsmp_candidates": 7
+    }
+  ],
+  "candidate_family_count": 72,
+  "candidates": [
+    {
+      "family_key": "jimliu/baoyu-skills:baoyu-url-to-markdown",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "jimliu/baoyu-skills",
+        "skill_name": "baoyu-url-to-markdown",
+        "family_key": "jimliu/baoyu-skills:baoyu-url-to-markdown",
+        "skills_sh_installs": 29800,
+        "skills_sh_installs_display": "29.8K",
+        "skills_sh_url": "https://skills.sh/jimliu/baoyu-skills/baoyu-url-to-markdown"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "lwmxiaobei/yt-dlp-skill:yt-dlp",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "lwmxiaobei/yt-dlp-skill",
+        "skill_name": "yt-dlp",
+        "family_key": "lwmxiaobei/yt-dlp-skill:yt-dlp",
+        "skills_sh_installs": 1400,
+        "skills_sh_installs_display": "1.4K",
+        "skills_sh_url": "https://skills.sh/lwmxiaobei/yt-dlp-skill/yt-dlp"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "reason-machines/trending-skills:weixin-agent-sdk",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "reason-machines/trending-skills",
+        "skill_name": "weixin-agent-sdk",
+        "family_key": "reason-machines/trending-skills:weixin-agent-sdk",
+        "skills_sh_installs": 1100,
+        "skills_sh_installs_display": "1.1K",
+        "skills_sh_url": "https://skills.sh/reason-machines/trending-skills/weixin-agent-sdk"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "mapleshaw/yt-dlp-downloader-skill:yt-dlp-downloader",
+      "queries": [
+        "download YouTube Bilibili X video",
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "mapleshaw/yt-dlp-downloader-skill",
+        "skill_name": "yt-dlp-downloader",
+        "family_key": "mapleshaw/yt-dlp-downloader-skill:yt-dlp-downloader",
+        "skills_sh_installs": 762,
+        "skills_sh_installs_display": "762",
+        "skills_sh_url": "https://skills.sh/mapleshaw/yt-dlp-downloader-skill/yt-dlp-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "feiskyer/video-skills:download-video",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "download YouTube Bilibili X video",
+        "owner_repo": "feiskyer/video-skills",
+        "skill_name": "download-video",
+        "family_key": "feiskyer/video-skills:download-video",
+        "skills_sh_installs": 160,
+        "skills_sh_installs_display": "160",
+        "skills_sh_url": "https://skills.sh/feiskyer/video-skills/download-video"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "yutto-dev/yutto:bilibili-video-download",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "download YouTube Bilibili X video",
+        "owner_repo": "yutto-dev/yutto",
+        "skill_name": "bilibili-video-download",
+        "family_key": "yutto-dev/yutto:bilibili-video-download",
+        "skills_sh_installs": 145,
+        "skills_sh_installs_display": "145",
+        "skills_sh_url": "https://skills.sh/yutto-dev/yutto/bilibili-video-download"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "crazynomad/skills:youtube-downloader",
+      "queries": [
+        "download YouTube Bilibili X video",
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "crazynomad/skills",
+        "skill_name": "youtube-downloader",
+        "family_key": "crazynomad/skills:youtube-downloader",
+        "skills_sh_installs": 98,
+        "skills_sh_installs_display": "98",
+        "skills_sh_url": "https://skills.sh/crazynomad/skills/youtube-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "aviz85/claude-skills-library:youtube-downloader",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "download YouTube Bilibili X video",
+        "owner_repo": "aviz85/claude-skills-library",
+        "skill_name": "youtube-downloader",
+        "family_key": "aviz85/claude-skills-library:youtube-downloader",
+        "skills_sh_installs": 86,
+        "skills_sh_installs_display": "86",
+        "skills_sh_url": "https://skills.sh/aviz85/claude-skills-library/youtube-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "jst-well-dan/skill-box:advanced-video-downloader",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "download YouTube Bilibili X video",
+        "owner_repo": "jst-well-dan/skill-box",
+        "skill_name": "advanced-video-downloader",
+        "family_key": "jst-well-dan/skill-box:advanced-video-downloader",
+        "skills_sh_installs": 84,
+        "skills_sh_installs_display": "84",
+        "skills_sh_url": "https://skills.sh/jst-well-dan/skill-box/advanced-video-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "openakita/openakita:openakita/skills@bilibili-watcher",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "download YouTube Bilibili X video",
+        "owner_repo": "openakita/openakita",
+        "skill_name": "openakita/skills@bilibili-watcher",
+        "family_key": "openakita/openakita:openakita/skills@bilibili-watcher",
+        "skills_sh_installs": 78,
+        "skills_sh_installs_display": "78",
+        "skills_sh_url": "https://skills.sh/openakita/openakita/openakita/skills@bilibili-watcher"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "ibigqiang/feedgrab:video",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "download YouTube Bilibili X video",
+        "owner_repo": "ibigqiang/feedgrab",
+        "skill_name": "video",
+        "family_key": "ibigqiang/feedgrab:video",
+        "skills_sh_installs": 75,
+        "skills_sh_installs_display": "75",
+        "skills_sh_url": "https://skills.sh/ibigqiang/feedgrab/video"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "memtensor/skills-vote:media-downloader",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "memtensor/skills-vote",
+        "skill_name": "media-downloader",
+        "family_key": "memtensor/skills-vote:media-downloader",
+        "skills_sh_installs": 75,
+        "skills_sh_installs_display": "75",
+        "skills_sh_url": "https://skills.sh/memtensor/skills-vote/media-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "terrylica/cc-skills:download-media",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "terrylica/cc-skills",
+        "skill_name": "download-media",
+        "family_key": "terrylica/cc-skills:download-media",
+        "skills_sh_installs": 74,
+        "skills_sh_installs_display": "74",
+        "skills_sh_url": "https://skills.sh/terrylica/cc-skills/download-media"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "openakita/openakita:openakita/skills@video-downloader",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "download YouTube Bilibili X video",
+        "owner_repo": "openakita/openakita",
+        "skill_name": "openakita/skills@video-downloader",
+        "family_key": "openakita/openakita:openakita/skills@video-downloader",
+        "skills_sh_installs": 60,
+        "skills_sh_installs_display": "60",
+        "skills_sh_url": "https://skills.sh/openakita/openakita/openakita/skills@video-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "kwindla/skill-caption-clip:caption-clip",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "kwindla/skill-caption-clip",
+        "skill_name": "caption-clip",
+        "family_key": "kwindla/skill-caption-clip:caption-clip",
+        "skills_sh_installs": 59,
+        "skills_sh_installs_display": "59",
+        "skills_sh_url": "https://skills.sh/kwindla/skill-caption-clip/caption-clip"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "bossjones/boss-skills:twitter-media-downloader",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "bossjones/boss-skills",
+        "skill_name": "twitter-media-downloader",
+        "family_key": "bossjones/boss-skills:twitter-media-downloader",
+        "skills_sh_installs": 58,
+        "skills_sh_installs_display": "58",
+        "skills_sh_url": "https://skills.sh/bossjones/boss-skills/twitter-media-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "open-edge-platform/edge-ai-libraries:model-download-user",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "open-edge-platform/edge-ai-libraries",
+        "skill_name": "model-download-user",
+        "family_key": "open-edge-platform/edge-ai-libraries:model-download-user",
+        "skills_sh_installs": 50,
+        "skills_sh_installs_display": "50",
+        "skills_sh_url": "https://skills.sh/open-edge-platform/edge-ai-libraries/model-download-user"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "agntswrm/agent-media:agent-media",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "agntswrm/agent-media",
+        "skill_name": "agent-media",
+        "family_key": "agntswrm/agent-media:agent-media",
+        "skills_sh_installs": 48,
+        "skills_sh_installs_display": "48",
+        "skills_sh_url": "https://skills.sh/agntswrm/agent-media/agent-media"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "bahayonghang/my-ai-cli-toolkit:yt-dlp",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "bahayonghang/my-ai-cli-toolkit",
+        "skill_name": "yt-dlp",
+        "family_key": "bahayonghang/my-ai-cli-toolkit:yt-dlp",
+        "skills_sh_installs": 45,
+        "skills_sh_installs_display": "45",
+        "skills_sh_url": "https://skills.sh/bahayonghang/my-ai-cli-toolkit/yt-dlp"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "jackspace/claudeskillz:youtube-downloader",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "jackspace/claudeskillz",
+        "skill_name": "youtube-downloader",
+        "family_key": "jackspace/claudeskillz:youtube-downloader",
+        "skills_sh_installs": 44,
+        "skills_sh_installs_display": "44",
+        "skills_sh_url": "https://skills.sh/jackspace/claudeskillz/youtube-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "knoopx/pi:yt-dlp",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "knoopx/pi",
+        "skill_name": "yt-dlp",
+        "family_key": "knoopx/pi:yt-dlp",
+        "skills_sh_installs": 42,
+        "skills_sh_installs_display": "42",
+        "skills_sh_url": "https://skills.sh/knoopx/pi/yt-dlp"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "dp-archive/archive:media-downloader",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "dp-archive/archive",
+        "skill_name": "media-downloader",
+        "family_key": "dp-archive/archive:media-downloader",
+        "skills_sh_installs": 36,
+        "skills_sh_installs_display": "36",
+        "skills_sh_url": "https://skills.sh/dp-archive/archive/media-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "dp-archive/archive:audio-extractor",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "dp-archive/archive",
+        "skill_name": "audio-extractor",
+        "family_key": "dp-archive/archive:audio-extractor",
+        "skills_sh_installs": 33,
+        "skills_sh_installs_display": "33",
+        "skills_sh_url": "https://skills.sh/dp-archive/archive/audio-extractor"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "yelban/baoyu-skills.tw:baoyu-url-to-markdown",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "yelban/baoyu-skills.tw",
+        "skill_name": "baoyu-url-to-markdown",
+        "family_key": "yelban/baoyu-skills.tw:baoyu-url-to-markdown",
+        "skills_sh_installs": 33,
+        "skills_sh_installs_display": "33",
+        "skills_sh_url": "https://skills.sh/yelban/baoyu-skills.tw/baoyu-url-to-markdown"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "jamditis/claude-skills-journalism:video-download",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "jamditis/claude-skills-journalism",
+        "skill_name": "video-download",
+        "family_key": "jamditis/claude-skills-journalism:video-download",
+        "skills_sh_installs": 30,
+        "skills_sh_installs_display": "30",
+        "skills_sh_url": "https://skills.sh/jamditis/claude-skills-journalism/video-download"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "wlzh/skills:youtube-downloader",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "download YouTube Bilibili X video",
+        "owner_repo": "wlzh/skills",
+        "skill_name": "youtube-downloader",
+        "family_key": "wlzh/skills:youtube-downloader",
+        "skills_sh_installs": 30,
+        "skills_sh_installs_display": "30",
+        "skills_sh_url": "https://skills.sh/wlzh/skills/youtube-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "iopho-team/iopho-skills:iopho-searching-videos",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "download YouTube Bilibili X video",
+        "owner_repo": "iopho-team/iopho-skills",
+        "skill_name": "iopho-searching-videos",
+        "family_key": "iopho-team/iopho-skills:iopho-searching-videos",
+        "skills_sh_installs": 25,
+        "skills_sh_installs_display": "25",
+        "skills_sh_url": "https://skills.sh/iopho-team/iopho-skills/iopho-searching-videos"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "isjiamu/jiamu-skills:video-downloader",
+      "queries": [
+        "download YouTube Bilibili X video",
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "isjiamu/jiamu-skills",
+        "skill_name": "video-downloader",
+        "family_key": "isjiamu/jiamu-skills:video-downloader",
+        "skills_sh_installs": 22,
+        "skills_sh_installs_display": "22",
+        "skills_sh_url": "https://skills.sh/isjiamu/jiamu-skills/video-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "crunteam/crun-agent-skills:crun-agent-skills",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "crunteam/crun-agent-skills",
+        "skill_name": "crun-agent-skills",
+        "family_key": "crunteam/crun-agent-skills:crun-agent-skills",
+        "skills_sh_installs": 16,
+        "skills_sh_installs_display": "16",
+        "skills_sh_url": "https://skills.sh/crunteam/crun-agent-skills/crun-agent-skills"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "open-edge-platform/skills:model-download-user",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "open-edge-platform/skills",
+        "skill_name": "model-download-user",
+        "family_key": "open-edge-platform/skills:model-download-user",
+        "skills_sh_installs": 16,
+        "skills_sh_installs_display": "16",
+        "skills_sh_url": "https://skills.sh/open-edge-platform/skills/model-download-user"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "aston1690/baoyu-url-to-markdown:baoyu-url-to-markdown",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "aston1690/baoyu-url-to-markdown",
+        "skill_name": "baoyu-url-to-markdown",
+        "family_key": "aston1690/baoyu-url-to-markdown:baoyu-url-to-markdown",
+        "skills_sh_installs": 12,
+        "skills_sh_installs_display": "12",
+        "skills_sh_url": "https://skills.sh/aston1690/baoyu-url-to-markdown/baoyu-url-to-markdown"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "cosmicstack-labs/mercury-agent-skills:audio-extraction",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "cosmicstack-labs/mercury-agent-skills",
+        "skill_name": "audio-extraction",
+        "family_key": "cosmicstack-labs/mercury-agent-skills:audio-extraction",
+        "skills_sh_installs": 12,
+        "skills_sh_installs_display": "12",
+        "skills_sh_url": "https://skills.sh/cosmicstack-labs/mercury-agent-skills/audio-extraction"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "drivespark/ai-coding:yt-dlp-skill",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "drivespark/ai-coding",
+        "skill_name": "yt-dlp-skill",
+        "family_key": "drivespark/ai-coding:yt-dlp-skill",
+        "skills_sh_installs": 11,
+        "skills_sh_installs_display": "11",
+        "skills_sh_url": "https://skills.sh/drivespark/ai-coding/yt-dlp-skill"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "qiaoshouqing/skills:video-downloader",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "qiaoshouqing/skills",
+        "skill_name": "video-downloader",
+        "family_key": "qiaoshouqing/skills:video-downloader",
+        "skills_sh_installs": 10,
+        "skills_sh_installs_display": "10",
+        "skills_sh_url": "https://skills.sh/qiaoshouqing/skills/video-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "craftos-dev/craftbot:universal-video-downloader",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "craftos-dev/craftbot",
+        "skill_name": "universal-video-downloader",
+        "family_key": "craftos-dev/craftbot:universal-video-downloader",
+        "skills_sh_installs": 9,
+        "skills_sh_installs_display": "9",
+        "skills_sh_url": "https://skills.sh/craftos-dev/craftbot/universal-video-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "aeonbridge/ab-anthropic-claude-skills:yt-dlp",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "aeonbridge/ab-anthropic-claude-skills",
+        "skill_name": "yt-dlp",
+        "family_key": "aeonbridge/ab-anthropic-claude-skills:yt-dlp",
+        "skills_sh_installs": 8,
+        "skills_sh_installs_display": "8",
+        "skills_sh_url": "https://skills.sh/aeonbridge/ab-anthropic-claude-skills/yt-dlp"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "tikhub/tikhub-plugin:social-media-downloader",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "tikhub/tikhub-plugin",
+        "skill_name": "social-media-downloader",
+        "family_key": "tikhub/tikhub-plugin:social-media-downloader",
+        "skills_sh_installs": 8,
+        "skills_sh_installs_display": "8",
+        "skills_sh_url": "https://skills.sh/tikhub/tikhub-plugin/social-media-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "johnqtcg/awesome-skills:yt-dlp-downloader",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "johnqtcg/awesome-skills",
+        "skill_name": "yt-dlp-downloader",
+        "family_key": "johnqtcg/awesome-skills:yt-dlp-downloader",
+        "skills_sh_installs": 7,
+        "skills_sh_installs_display": "7",
+        "skills_sh_url": "https://skills.sh/johnqtcg/awesome-skills/yt-dlp-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "moutainman/yt-dlp-skill:yt-dlp",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "moutainman/yt-dlp-skill",
+        "skill_name": "yt-dlp",
+        "family_key": "moutainman/yt-dlp-skill:yt-dlp",
+        "skills_sh_installs": 7,
+        "skills_sh_installs_display": "7",
+        "skills_sh_url": "https://skills.sh/moutainman/yt-dlp-skill/yt-dlp"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "sundial-org/awesome-openclaw-skills:yt-dlp-downloader",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "sundial-org/awesome-openclaw-skills",
+        "skill_name": "yt-dlp-downloader",
+        "family_key": "sundial-org/awesome-openclaw-skills:yt-dlp-downloader",
+        "skills_sh_installs": 7,
+        "skills_sh_installs_display": "7",
+        "skills_sh_url": "https://skills.sh/sundial-org/awesome-openclaw-skills/yt-dlp-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "terminalskills/skills:yt-dlp",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "universal video downloader yt-dlp",
+        "owner_repo": "terminalskills/skills",
+        "skill_name": "yt-dlp",
+        "family_key": "terminalskills/skills:yt-dlp",
+        "skills_sh_installs": 7,
+        "skills_sh_installs_display": "7",
+        "skills_sh_url": "https://skills.sh/terminalskills/skills/yt-dlp"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "zzh-editor/media-downloader:media-downloader",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "zzh-editor/media-downloader",
+        "skill_name": "media-downloader",
+        "family_key": "zzh-editor/media-downloader:media-downloader",
+        "skills_sh_installs": 7,
+        "skills_sh_installs_display": "7",
+        "skills_sh_url": "https://skills.sh/zzh-editor/media-downloader/media-downloader"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "gitroomhq/agent-media:agent-media-v2",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "gitroomhq/agent-media",
+        "skill_name": "agent-media-v2",
+        "family_key": "gitroomhq/agent-media:agent-media-v2",
+        "skills_sh_installs": 6,
+        "skills_sh_installs_display": "6",
+        "skills_sh_url": "https://skills.sh/gitroomhq/agent-media/agent-media-v2"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "coroboros/agent-skills:download-media",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "media download agent skill",
+        "owner_repo": "coroboros/agent-skills",
+        "skill_name": "download-media",
+        "family_key": "coroboros/agent-skills:download-media",
+        "skills_sh_installs": 5,
+        "skills_sh_installs_display": "5",
+        "skills_sh_url": "https://skills.sh/coroboros/agent-skills/download-media"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "illli-studio/skills:video-transcript",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "download YouTube Bilibili X video",
+        "owner_repo": "illli-studio/skills",
+        "skill_name": "video-transcript",
+        "family_key": "illli-studio/skills:video-transcript",
+        "skills_sh_installs": 4,
+        "skills_sh_installs_display": "4",
+        "skills_sh_url": "https://skills.sh/illli-studio/skills/video-transcript"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "viva-org/video-downloader-skill:video-downloader-skill",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": {
+        "source": "skills.sh",
+        "query": "download YouTube Bilibili X video",
+        "owner_repo": "viva-org/video-downloader-skill",
+        "skill_name": "video-downloader-skill",
+        "family_key": "viva-org/video-downloader-skill:video-downloader-skill",
+        "skills_sh_installs": 2,
+        "skills_sh_installs_display": "2",
+        "skills_sh_url": "https://skills.sh/viva-org/video-downloader-skill/video-downloader-skill"
+      },
+      "skillsmp": null,
+      "catalogs": [
+        "skills.sh"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "openclaw/openclaw:gifgrep",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "gifgrep",
+        "author": "openclaw",
+        "description": "Search GIF providers with CLI/TUI, download results, and extract stills/sheets.",
+        "content_language": "en",
+        "github_url": "https://github.com/openclaw/openclaw/tree/main/skills/gifgrep",
+        "skillsmp_url": "https://skillsmp.com/creators/openclaw/openclaw/skills-gifgrep",
+        "repo_stars": 389030,
+        "catalog_updated_at": "2026-05-17T10:50:27+00:00",
+        "source_key": "openclaw/openclaw:skills/gifgrep",
+        "family_key": "openclaw/openclaw:gifgrep",
+        "aliases": [],
+        "query": "download YouTube Bilibili X video"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "openclaw/openclaw:xurl",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "xurl",
+        "author": "openclaw",
+        "description": "xurl CLI for authenticated X posts, replies, reads/search, DMs, media upload, followers, auth status, or raw v2 API calls.",
+        "content_language": "en",
+        "github_url": "https://github.com/openclaw/openclaw/tree/main/skills/xurl",
+        "skillsmp_url": "https://skillsmp.com/creators/openclaw/openclaw/skills-xurl",
+        "repo_stars": 389030,
+        "catalog_updated_at": "2026-07-08T15:07:09+00:00",
+        "source_key": "openclaw/openclaw:skills/xurl",
+        "family_key": "openclaw/openclaw:xurl",
+        "aliases": [],
+        "query": "media download agent skill"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "affaan-m/ecc:coding-standards",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "coding-standards",
+        "author": "affaan-m",
+        "description": "Universal coding standards, best practices, and patterns for TypeScript, JavaScript, React, and Node.js development.",
+        "content_language": "en",
+        "github_url": "https://github.com/affaan-m/ECC/tree/main/.kiro/skills/coding-standards",
+        "skillsmp_url": "https://skillsmp.com/creators/affaan-m/ecc/kiro-skills-coding-standards",
+        "repo_stars": 253169,
+        "catalog_updated_at": "2026-06-07T05:26:01+00:00",
+        "source_key": "affaan-m/ecc:.kiro/skills/coding-standards",
+        "family_key": "affaan-m/ecc:coding-standards",
+        "aliases": [
+          {
+            "language": "zh",
+            "github_url": "https://github.com/affaan-m/ECC/tree/main/docs/zh-TW/skills/coding-standards"
+          }
+        ],
+        "query": "universal video downloader yt-dlp"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "affaan-m/ecc:fal-ai-media",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "fal-ai-media",
+        "author": "affaan-m",
+        "description": "Unified media generation via fal.ai MCP — image, video, and audio. Covers text-to-image (Nano Banana), text/image-to-video (Seedance, Kling, Veo 3), text-to-speech (CSM-1B), and video-to-audio (ThinkSound). Use when the user wants to generate images, videos, or audio with AI.",
+        "content_language": "en",
+        "github_url": "https://github.com/affaan-m/ECC/tree/main/skills/fal-ai-media",
+        "skillsmp_url": "https://skillsmp.com/creators/affaan-m/ecc/skills-fal-ai-media",
+        "repo_stars": 253169,
+        "catalog_updated_at": "2026-06-11T12:12:21+00:00",
+        "source_key": "affaan-m/ecc:skills/fal-ai-media",
+        "family_key": "affaan-m/ecc:fal-ai-media",
+        "aliases": [
+          {
+            "language": "en",
+            "github_url": "https://github.com/affaan-m/ECC/tree/main/.agents/skills/fal-ai-media"
+          },
+          {
+            "language": "ja",
+            "github_url": "https://github.com/affaan-m/ECC/tree/main/docs/ja-JP/skills/fal-ai-media"
+          },
+          {
+            "language": "zh",
+            "github_url": "https://github.com/affaan-m/ECC/tree/main/docs/zh-CN/skills/fal-ai-media"
+          }
+        ],
+        "query": "media download agent skill"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "affaan-m/ecc:social-publisher",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "social-publisher",
+        "author": "affaan-m",
+        "description": "Agent-driven scheduling and publishing of social media posts across 13 platforms via SocialClaw. Use when the user wants to publish to X, LinkedIn, Instagram, Facebook Pages, TikTok, Discord, Telegram, YouTube, Reddit, WordPress, or Pinterest — or when managing campaigns, uploading media, or monitoring post delivery status.",
+        "content_language": "en",
+        "github_url": "https://github.com/affaan-m/ECC/tree/main/skills/social-publisher",
+        "skillsmp_url": "https://skillsmp.com/creators/affaan-m/ecc/skills-social-publisher",
+        "repo_stars": 253169,
+        "catalog_updated_at": "2026-08-25T01:26:32+00:00",
+        "source_key": "affaan-m/ecc:skills/social-publisher",
+        "family_key": "affaan-m/ecc:social-publisher",
+        "aliases": [],
+        "query": "media download agent skill"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "affaan-m/ecc:taste",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "taste",
+        "author": "affaan-m",
+        "description": "A creative-direction (taste) layer for music videos and short-form edits in the angelcore / cloud-trance / hyperpop visual family. Distills a named-genre aesthetic vocabulary, a mood + color + light system, and a beat-synced editing grammar, then chains ECC's video skills (video-editing, fal-ai-media, remotion-video-creation, motion-*, content-engine) into one production pipeline. Use when the work is not just making a video function but making it feel intentional, when building a music video, a fancam/edit, a moodboard-driven reel, or when choosing a coherent visual direction for AI-generated b-roll.",
+        "content_language": "en",
+        "github_url": "https://github.com/affaan-m/ECC/tree/main/skills/taste",
+        "skillsmp_url": "https://skillsmp.com/creators/affaan-m/ecc/skills-taste",
+        "repo_stars": 253169,
+        "catalog_updated_at": "2026-06-07T16:43:04+00:00",
+        "source_key": "affaan-m/ecc:skills/taste",
+        "family_key": "affaan-m/ecc:taste",
+        "aliases": [],
+        "query": "media download agent skill"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "affaan-m/ecc:videodb",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "videodb",
+        "author": "affaan-m",
+        "description": "See, Understand, Act on video and audio. See- ingest from local files, URLs, RTSP/live feeds, or live record desktop; return realtime context and playable stream links. Understand- extract frames, build visual/semantic/temporal indexes, and search moments with timestamps and auto-clips. Act- transcode and normalize (codec, fps, resolution, aspect ratio), perform timeline edits (subtitles, text/image overlays, branding, audio overlays, dubbing, translation), generate media assets (image, audio, video), and create real time alerts for events from live streams or desktop capture. Use when ingesting, indexing, searching, editing, transcoding, or alerting on video or audio content.",
+        "content_language": "en",
+        "github_url": "https://github.com/affaan-m/ECC/tree/main/skills/videodb",
+        "skillsmp_url": "https://skillsmp.com/creators/affaan-m/ecc/skills-videodb",
+        "repo_stars": 253169,
+        "catalog_updated_at": "2026-08-12T03:58:14+00:00",
+        "source_key": "affaan-m/ecc:skills/videodb",
+        "family_key": "affaan-m/ecc:videodb",
+        "aliases": [],
+        "query": "media download agent skill"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "nousresearch/hermes-agent:gif-search",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "gif-search",
+        "author": "NousResearch",
+        "description": "Search/download GIFs from Tenor via curl + jq.",
+        "content_language": "en",
+        "github_url": "https://github.com/NousResearch/hermes-agent/tree/main/skills/media/gif-search",
+        "skillsmp_url": "https://skillsmp.com/creators/nousresearch/hermes-agent/skills-media-gif-search",
+        "repo_stars": 243171,
+        "catalog_updated_at": "2026-06-10T22:10:11+00:00",
+        "source_key": "nousresearch/hermes-agent:skills/media/gif-search",
+        "family_key": "nousresearch/hermes-agent:gif-search",
+        "aliases": [],
+        "query": "download YouTube Bilibili X video"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "nousresearch/hermes-agent:huggingface-hub",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "huggingface-hub",
+        "author": "NousResearch",
+        "description": "HuggingFace hf CLI: search/download/upload models, datasets.",
+        "content_language": "en",
+        "github_url": "https://github.com/NousResearch/hermes-agent/tree/main/optional-skills/mlops/models/huggingface-hub",
+        "skillsmp_url": "https://skillsmp.com/creators/nousresearch/hermes-agent/optional-skills-mlops-models-huggingface-hub",
+        "repo_stars": 243171,
+        "catalog_updated_at": "2026-08-30T11:53:39+00:00",
+        "source_key": "nousresearch/hermes-agent:optional-skills/mlops/models/huggingface-hub",
+        "family_key": "nousresearch/hermes-agent:huggingface-hub",
+        "aliases": [],
+        "query": "download YouTube Bilibili X video"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "nousresearch/hermes-agent:social-media-content-calendar",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "social-media-content-calendar",
+        "author": "NousResearch",
+        "description": "Plan multi-platform social campaigns: briefs to posting.",
+        "content_language": "en",
+        "github_url": "https://github.com/NousResearch/hermes-agent/tree/main/optional-skills/creative/social-media-content-calendar",
+        "skillsmp_url": "https://skillsmp.com/creators/nousresearch/hermes-agent/optional-skills-creative-social-media-content-calendar",
+        "repo_stars": 243171,
+        "catalog_updated_at": "2026-08-08T19:05:19+00:00",
+        "source_key": "nousresearch/hermes-agent:optional-skills/creative/social-media-content-calendar",
+        "family_key": "nousresearch/hermes-agent:social-media-content-calendar",
+        "aliases": [],
+        "query": "media download agent skill"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "nousresearch/hermes-agent:xurl",
+      "queries": [
+        "media download agent skill"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "xurl",
+        "author": "NousResearch",
+        "description": "X/Twitter via xurl CLI: raw post search, posting, DM, media.",
+        "content_language": "en",
+        "github_url": "https://github.com/NousResearch/hermes-agent/tree/main/skills/social-media/xurl",
+        "skillsmp_url": "https://skillsmp.com/creators/nousresearch/hermes-agent/skills-social-media-xurl",
+        "repo_stars": 243171,
+        "catalog_updated_at": "2026-07-24T04:06:47+00:00",
+        "source_key": "nousresearch/hermes-agent:skills/social-media/xurl",
+        "family_key": "nousresearch/hermes-agent:xurl",
+        "aliases": [],
+        "query": "media download agent skill"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "anthropics/skills:xlsx",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "xlsx",
+        "author": "anthropics",
+        "description": "Use this skill any time a spreadsheet file is the primary input or output. This means any task where the user wants to: open, read, edit, or fix an existing .xlsx, .xlsm, .xltx, .csv, or .tsv file (e.g., adding columns, computing formulas, formatting, charting, cleaning messy data); create a new spreadsheet from scratch or from other data sources; or convert between tabular file formats. Trigger especially when the user references a spreadsheet file by name or path — even casually (like \"the xlsx in my downloads\") — and wants something done to it or produced from it. Also trigger for cleaning or restructuring messy tabular data files (malformed rows, misplaced headers, junk data) into proper spreadsheets. The deliverable must be a spreadsheet file. Do NOT trigger when the primary deliverable is a Word document, HTML report, standalone Python script, database pipeline, or Google Sheets API integration, even if tabular data is involved.",
+        "content_language": "en",
+        "github_url": "https://github.com/anthropics/skills/tree/main/skills/xlsx",
+        "skillsmp_url": "https://skillsmp.com/creators/anthropics/skills/skills-xlsx",
+        "repo_stars": 175110,
+        "catalog_updated_at": "2026-07-17T02:47:37+00:00",
+        "source_key": "anthropics/skills:skills/xlsx",
+        "family_key": "anthropics/skills:xlsx",
+        "aliases": [],
+        "query": "download YouTube Bilibili X video"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "supabase/supabase:pm-the-docs",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "pm-the-docs",
+        "author": "supabase",
+        "description": "Docs-PM decision support for the \"Write the docs\" authoring process — makes audience, stage, and cross-cutting scope calls during the Frame and Shape stages (including cross-repo product lookup via universe when accessible, else the public OSS path), and helps decide when a docs question needs to self-serve vs. escalate to a docs PM. Use when framing a new docs page or launch, deciding what product stage or audience a feature targets, judging whether a docs question needs PM sign-off, or confirming which product repos a launch spans.",
+        "content_language": "en",
+        "github_url": "https://github.com/supabase/supabase/tree/master/.agents/skills/pm-the-docs",
+        "skillsmp_url": "https://skillsmp.com/creators/supabase/supabase/agents-skills-pm-the-docs",
+        "repo_stars": 108943,
+        "catalog_updated_at": "2026-09-04T00:34:45+00:00",
+        "source_key": "supabase/supabase:.agents/skills/pm-the-docs",
+        "family_key": "supabase/supabase:pm-the-docs",
+        "aliases": [],
+        "query": "universal video downloader yt-dlp"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "nexu-io/open-design:export-download-debugging",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "export-download-debugging",
+        "author": "nexu-io",
+        "description": "Diagnose and fix browser, preview, or Electron export/download failures, especially image export issues involving Save As, Blob/Data URLs, the File System Access API, createWritable failures, and 0 KB files.",
+        "content_language": "en",
+        "github_url": "https://github.com/nexu-io/open-design/tree/main/skills/export-download-debugging",
+        "skillsmp_url": "https://skillsmp.com/creators/nexu-io/open-design/skills-export-download-debugging",
+        "repo_stars": 94749,
+        "catalog_updated_at": "2026-05-30T04:44:00+00:00",
+        "source_key": "nexu-io/open-design:skills/export-download-debugging",
+        "family_key": "nexu-io/open-design:export-download-debugging",
+        "aliases": [],
+        "query": "download YouTube Bilibili X video"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "nexu-io/open-design:video-downloader",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "video-downloader",
+        "author": "nexu-io",
+        "description": "Download videos from YouTube and other platforms for offline viewing, editing, or archival with support for various formats and quality options.",
+        "content_language": "en",
+        "github_url": "https://github.com/nexu-io/open-design/tree/main/skills/video-downloader",
+        "skillsmp_url": "https://skillsmp.com/creators/nexu-io/open-design/skills-video-downloader",
+        "repo_stars": 94749,
+        "catalog_updated_at": "2026-08-18T07:09:45+00:00",
+        "source_key": "nexu-io/open-design:skills/video-downloader",
+        "family_key": "nexu-io/open-design:video-downloader",
+        "aliases": [],
+        "query": "download YouTube Bilibili X video"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "astral-sh/uv:load-github-action-thread",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "load-github-action-thread",
+        "author": "astral-sh",
+        "description": "Download retained Codex GitHub Action thread artifacts and load their rollout history into the local Codex app. Use when asked to open, load, import, resume, or inspect a Codex automation thread from a GitHub Actions run or a related GitHub issue or pull request.",
+        "content_language": "en",
+        "github_url": "https://github.com/astral-sh/uv/tree/main/.codex/skills/load-github-action-thread",
+        "skillsmp_url": "https://skillsmp.com/creators/astral-sh/uv/codex-skills-load-github-action-thread",
+        "repo_stars": 89739,
+        "catalog_updated_at": "2026-07-31T17:08:30+00:00",
+        "source_key": "astral-sh/uv:.codex/skills/load-github-action-thread",
+        "family_key": "astral-sh/uv:load-github-action-thread",
+        "aliases": [],
+        "query": "download YouTube Bilibili X video"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "netdata/netdata:collectors-authoring",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "collectors-authoring",
+        "author": "netdata",
+        "description": "Entry point and routing for authoring or modifying any Netdata data-collection plugin or module (internal C plugins, go.d and ibm.d Go modules, Rust plugins, external PLUGINSD plugins). Read before adding a collector, changing one, or working on logs, topology, NetFlow/sFlow/IPFIX, OTEL ingestion, SNMP profiles, statsd, Prometheus scraping, or interactive Functions. Covers the mental model, universal practices, the production quality bar, routing by task, and canonical pointers; dashboard-shaping mechanisms and the plugin landscape live in its reference files.",
+        "content_language": "en",
+        "github_url": "https://github.com/netdata/netdata/tree/master/.agents/skills/collectors-authoring",
+        "skillsmp_url": "https://skillsmp.com/creators/netdata/netdata/agents-skills-collectors-authoring",
+        "repo_stars": 80494,
+        "catalog_updated_at": "2026-09-10T06:57:20+00:00",
+        "source_key": "netdata/netdata:.agents/skills/collectors-authoring",
+        "family_key": "netdata/netdata:collectors-authoring",
+        "aliases": [],
+        "query": "universal video downloader yt-dlp"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "thedaviddias/front-end-checklist:import-on-interaction",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "import-on-interaction",
+        "author": "thedaviddias",
+        "description": "Use when reviewing slow initial loads caused by optional features. Prioritize code that is expensive to download or execute and not required for the first viewport, first input, or core task completion.",
+        "content_language": "en",
+        "github_url": "https://github.com/thedaviddias/Front-End-Checklist/tree/main/skills/import-on-interaction",
+        "skillsmp_url": "https://skillsmp.com/creators/thedaviddias/front-end-checklist/skills-import-on-interaction",
+        "repo_stars": 74050,
+        "catalog_updated_at": "2026-05-29T21:54:06+00:00",
+        "source_key": "thedaviddias/front-end-checklist:skills/import-on-interaction",
+        "family_key": "thedaviddias/front-end-checklist:import-on-interaction",
+        "aliases": [],
+        "query": "download YouTube Bilibili X video"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "ansible/ansible:azp-logs",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "azp-logs",
+        "author": "ansible",
+        "description": "Download Azure Pipelines CI logs for analysis",
+        "content_language": "en",
+        "github_url": "https://github.com/ansible/ansible/tree/devel/.claude/skills/azp-logs",
+        "skillsmp_url": "https://skillsmp.com/creators/ansible/ansible/claude-skills-azp-logs",
+        "repo_stars": 70661,
+        "catalog_updated_at": "2026-09-02T23:56:37+00:00",
+        "source_key": "ansible/ansible:.claude/skills/azp-logs",
+        "family_key": "ansible/ansible:azp-logs",
+        "aliases": [],
+        "query": "download YouTube Bilibili X video"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "warpdotdev/warp:gui-onboarding-verification-skill",
+      "queries": [
+        "download YouTube Bilibili X video"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "gui-onboarding-verification-skill",
+        "author": "warpdotdev",
+        "description": "GUI desktop app only. Launch two parallel Oz cloud agents with computer use to download and install the latest stable Linux Warp build, capture screenshots while walking through first-time onboarding in both logged-out and logged-in states, then selectively fan out follow-up cloud agents for distinct onboarding branches proposed by those initial explorers. Use this whenever the user asks to test, document, screenshot, or walk through the Warp first-time install/onboarding experience in a cloud Linux environment.",
+        "content_language": "en",
+        "github_url": "https://github.com/warpdotdev/warp/tree/master/.agents/skills/gui-onboarding-verification-skill",
+        "skillsmp_url": "https://skillsmp.com/creators/warpdotdev/warp/agents-skills-gui-onboarding-verification-skill",
+        "repo_stars": 64865,
+        "catalog_updated_at": "2026-07-10T23:23:40+00:00",
+        "source_key": "warpdotdev/warp:.agents/skills/gui-onboarding-verification-skill",
+        "family_key": "warpdotdev/warp:gui-onboarding-verification-skill",
+        "aliases": [],
+        "query": "download YouTube Bilibili X video"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "twentyhq/twenty:syncable-entity-cache-and-transform",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "syncable-entity-cache-and-transform",
+        "author": "twentyhq",
+        "description": "Create cache services and transformation utilities for syncable entities in Twenty. Use when implementing entity-to-flat conversions, input DTO transpilation to universal flat entities, or cache recomputation for syncable entities.",
+        "content_language": "en",
+        "github_url": "https://github.com/twentyhq/twenty/tree/main/.cursor/skills/syncable-entity-cache-and-transform",
+        "skillsmp_url": "https://skillsmp.com/creators/twentyhq/twenty/cursor-skills-syncable-entity-cache-and-transform",
+        "repo_stars": 56358,
+        "catalog_updated_at": "2026-02-13T11:18:31+00:00",
+        "source_key": "twentyhq/twenty:.cursor/skills/syncable-entity-cache-and-transform",
+        "family_key": "twentyhq/twenty:syncable-entity-cache-and-transform",
+        "aliases": [],
+        "query": "universal video downloader yt-dlp"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "twentyhq/twenty:syncable-entity-runner-and-actions",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "syncable-entity-runner-and-actions",
+        "author": "twentyhq",
+        "description": "Implement action handlers for executing workspace migrations in Twenty. Use when creating database operations for syncable entities, implementing universal-to-flat entity transpilation, or handling create/update/delete actions in the runner layer.",
+        "content_language": "en",
+        "github_url": "https://github.com/twentyhq/twenty/tree/main/.cursor/skills/syncable-entity-runner-and-actions",
+        "skillsmp_url": "https://skillsmp.com/creators/twentyhq/twenty/cursor-skills-syncable-entity-runner-and-actions",
+        "repo_stars": 56358,
+        "catalog_updated_at": "2026-02-13T11:18:31+00:00",
+        "source_key": "twentyhq/twenty:.cursor/skills/syncable-entity-runner-and-actions",
+        "family_key": "twentyhq/twenty:syncable-entity-runner-and-actions",
+        "aliases": [],
+        "query": "universal video downloader yt-dlp"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "imbad0202/academic-research-skills:deep-research",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "deep-research",
+        "author": "Imbad0202",
+        "description": "Universal deep research agent team. 13-agent pipeline for rigorous academic research on any topic. 8 modes: full research, quick brief, paper review, lit-review, fact-check, three-way literature scan, Socratic guided research dialogue, and systematic review with optional meta-analysis. Covers research question formulation, Socratic mentoring, methodology design, systematic literature search, source verification, cross-source synthesis, risk of bias assessment, meta-analysis, APA 7.0 report compilation, editorial review, devil's advocate challenges, ethics review, and post-research literature monitoring. Triggers on: research, deep research, literature review, systematic review, meta-analysis, PRISMA, evidence synthesis, fact-check, WHY HOW WHAT papers, 3W literature scan, guide my research, help me think through, 研究, 深度研究, 文獻回顧, 文獻探討, 系統性回顧, 後設分析, 事實查核, 三段式文獻掃描, 引導我的研究, 幫我釐清, 幫我想想, 我不確定要研究什麼, 研究方向, 研究主題, 심층 연구, 문헌 조사, 체계적 문헌고찰, 메타분석, 사실 확인, 연구 방향을 잡아줘, 연구 주제 정하는 것을 도와줘.",
+        "content_language": "en",
+        "github_url": "https://github.com/Imbad0202/academic-research-skills/tree/main/deep-research",
+        "skillsmp_url": "https://skillsmp.com/creators/imbad0202/academic-research-skills/deep-research",
+        "repo_stars": 46918,
+        "catalog_updated_at": "2026-09-08T06:50:52+00:00",
+        "source_key": "imbad0202/academic-research-skills:deep-research",
+        "family_key": "imbad0202/academic-research-skills:deep-research",
+        "aliases": [],
+        "query": "universal video downloader yt-dlp"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "k-dense-ai/scientific-agent-skills:geniml",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "geniml",
+        "author": "K-Dense-AI",
+        "description": "Use Geniml for audited local genomic-interval workflows: validate BED and universe contracts, plan Region2Vec or scEmbed runs, inspect model/tokenizer compatibility, and assess consensus universes.",
+        "content_language": "en",
+        "github_url": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/main/skills/geniml",
+        "skillsmp_url": "https://skillsmp.com/creators/k-dense-ai/scientific-agent-skills/skills-geniml",
+        "repo_stars": 43904,
+        "catalog_updated_at": "2026-09-02T16:25:16+00:00",
+        "source_key": "k-dense-ai/scientific-agent-skills:skills/geniml",
+        "family_key": "k-dense-ai/scientific-agent-skills:geniml",
+        "aliases": [],
+        "query": "universal video downloader yt-dlp"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "k-dense-ai/scientific-agent-skills:pathway-enrichment",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "pathway-enrichment",
+        "author": "K-Dense-AI",
+        "description": "Run pathway and gene-set enrichment analysis on gene lists or ranked gene data, then interpret the results. Use whenever the user has a set of genes (differentially expressed genes from PyDESeq2/Scanpy, CRISPR-screen hits, cluster marker genes, proteomics hits) and wants to know which biological pathways, GO terms, or gene sets are over-represented or enriched. Covers over-representation analysis (ORA / Enrichr / Fisher / hypergeometric), ranked Gene Set Enrichment Analysis (GSEA / preranked), single-sample scoring (ssGSEA/GSVA), and functional profiling via gseapy, g:Profiler, Enrichr libraries, MSigDB, GO, KEGG, Reactome, and WikiPathways — plus gene-ID mapping, choosing the right background universe, multiple-testing correction, redundancy reduction, dotplots/enrichment maps, and publication-ready tables. Use this for \"pathway analysis\", \"enrichment analysis\", \"GO enrichment\", \"KEGG/Reactome pathways\", \"GSEA\", \"over-representation\", \"functional annotation\", or \"what pathways are my genes in\".",
+        "content_language": "en",
+        "github_url": "https://github.com/K-Dense-AI/scientific-agent-skills/tree/main/skills/pathway-enrichment",
+        "skillsmp_url": "https://skillsmp.com/creators/k-dense-ai/scientific-agent-skills/skills-pathway-enrichment",
+        "repo_stars": 43904,
+        "catalog_updated_at": "2026-09-02T16:25:16+00:00",
+        "source_key": "k-dense-ai/scientific-agent-skills:skills/pathway-enrichment",
+        "family_key": "k-dense-ai/scientific-agent-skills:pathway-enrichment",
+        "aliases": [],
+        "query": "universal video downloader yt-dlp"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    },
+    {
+      "family_key": "posthog/posthog:diagnosing-stacktrace-symbolication",
+      "queries": [
+        "universal video downloader yt-dlp"
+      ],
+      "skills_sh": null,
+      "skillsmp": {
+        "source": "skillsmp",
+        "name": "diagnosing-stacktrace-symbolication",
+        "author": "PostHog",
+        "description": "Help users debug PostHog Error Tracking stack-trace symbolication for any supported platform — JavaScript/TypeScript web, React Native (Hermes), Android (Proguard / R8), or iOS / macOS (dSYM). The PostHog symbol-set lookup flow is universal across platforms; build-tool and artifact details live in per-platform references (JavaScript is fleshed out, others come as we encounter them). Use when stack frames stay minified or obfuscated after symbols are uploaded, PostHog symbol sets show last_used but frames are not readable, chunk IDs or dSYM UUIDs do not match, \"Token not found\" appears, uploaded source maps / dSYMs / Proguard mappings look empty, or bundler / symbol-upload configuration needs troubleshooting.",
+        "content_language": "en",
+        "github_url": "https://github.com/PostHog/posthog/tree/master/products/error_tracking/skills/diagnosing-stacktrace-symbolication",
+        "skillsmp_url": "https://skillsmp.com/creators/posthog/posthog/products-error-tracking-skills-diagnosing-stacktrace-symbolication",
+        "repo_stars": 39613,
+        "catalog_updated_at": "2026-07-16T12:20:58+00:00",
+        "source_key": "posthog/posthog:products/error_tracking/skills/diagnosing-stacktrace-symbolication",
+        "family_key": "posthog/posthog:diagnosing-stacktrace-symbolication",
+        "aliases": [],
+        "query": "universal video downloader yt-dlp"
+      },
+      "catalogs": [
+        "skillsmp"
+      ],
+      "requires_source_review": true
+    }
+  ],
+  "missing_evidence": [],
+  "next_steps": [
+    "shortlist by job relevance and role coverage, not combined popularity",
+    "open canonical GitHub source and inspect SKILL.md before adoption",
+    "verify license, maintenance, permissions, security, duplication, and rating evidence",
+    "write keep/adapt/reject/invent synthesis before authoring"
+  ]
+}

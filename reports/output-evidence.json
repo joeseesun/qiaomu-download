@@ -1,0 +1,43 @@
+{
+  "ok": true,
+  "evidence_kind": "provider_backed",
+  "validated_at": "2026-09-19",
+  "providers": ["YouTube", "Bilibili", "X/Twitter"],
+  "cookie_mode": "none",
+  "cases": [
+    {
+      "provider": "X/Twitter",
+      "source_url": "https://x.com/wey_gu/status/2100943729502953564",
+      "extractor": "Twitter",
+      "media_id": "2100943709814857729",
+      "metadata_ok": true,
+      "download_ok": true,
+      "ffprobe_ok": true,
+      "container": "mp4",
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "width": 544,
+      "height": 960,
+      "duration_seconds": 2.067,
+      "bytes": 236430
+    },
+    {
+      "provider": "YouTube",
+      "source_url": "https://www.youtube.com/watch?v=0Uu_VJeVVfo",
+      "extractor": "Youtube",
+      "media_id": "0Uu_VJeVVfo",
+      "metadata_ok": true,
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "provider": "Bilibili",
+      "source_url": "https://www.bilibili.com/video/BV1xx411c7mD/",
+      "extractor": "BiliBili",
+      "media_id": "BV1xx411c7mD",
+      "metadata_ok": true,
+      "width": 512,
+      "height": 384
+    }
+  ]
+}
