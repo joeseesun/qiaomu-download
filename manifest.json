@@ -1,6 +1,6 @@
 {
   "name": "qiaomu-download",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "owner": "向阳乔木",
   "updated_at": "2026-09-19",
   "status": "release-candidate",
@@ -10,14 +10,57 @@
   "entrypoint": "scripts/download.py",
   "runtime": "python>=3.10",
   "upstream_inspiration": "https://github.com/yt-dlp/yt-dlp",
-  "dependencies": ["yt-dlp", "ffmpeg", "ffprobe"],
-  "platforms": ["youtube", "bilibili", "x", "douyin", "tiktok", "xiaohongshu", "instagram", "facebook", "vimeo", "twitch", "reddit", "weibo", "acfun", "generic-yt-dlp"],
+  "dependencies": [
+    "yt-dlp",
+    "ffmpeg",
+    "ffprobe",
+    "embedded WeChat Channels adapter",
+    "optional locked wx_channels_download backend"
+  ],
+  "platforms": [
+    "wechat-channels",
+    "youtube",
+    "bilibili",
+    "x",
+    "douyin",
+    "tiktok",
+    "xiaohongshu",
+    "instagram",
+    "facebook",
+    "vimeo",
+    "twitch",
+    "reddit",
+    "weibo",
+    "acfun",
+    "generic-yt-dlp"
+  ],
   "intent": {
-    "job_to_be_done": "When the user expresses download intent and provides an HTTPS URL, detect downloadable media and return verified local artifacts without requiring the word video.",
-    "target_users": ["Qiaomu operator", "public skill installer"],
-    "inputs": ["explicit download or save intent plus one HTTPS URL", "optional quality, subtitle language, cookie, and output preferences"],
-    "outputs": ["verified video or MP3", "downloaded subtitles", "structured metadata"],
-    "exclusions": ["DRM bypass", "access-control bypass", "unbounded playlists", "silent credential export", "WeChat UI automation", "Xiaohongshu UI automation", "automated login CAPTCHA or security verification"]
+    "job_to_be_done": "When the user expresses download intent and provides an HTTPS URL, dispatch WeChat Channels to the embedded governed adapter or use yt-dlp for other sites, then return verified local artifacts.",
+    "target_users": [
+      "Qiaomu operator",
+      "public skill installer"
+    ],
+    "inputs": [
+      "explicit download or save intent plus one HTTPS URL",
+      "optional quality, subtitle language, cookie, and output preferences"
+    ],
+    "outputs": [
+      "verified video or MP3",
+      "downloaded subtitles",
+      "structured metadata",
+      "structured WeChat manual/setup state when a local connection is required"
+    ],
+    "exclusions": [
+      "DRM bypass",
+      "access-control bypass",
+      "unbounded playlists",
+      "silent credential export",
+      "Xiaohongshu UI automation",
+      "automated login CAPTCHA or security verification",
+      "WeChat UI automation",
+      "silent sharing of WeChat URLs with third parties",
+      "silent certificate trust or proxy mutation"
+    ]
   },
   "qiaomu_defaults": {
     "copyright": "Copyright (c) 向阳乔木",
@@ -31,6 +74,22 @@
     "clean local install proof",
     "YouTube Bilibili and X provider probes",
     "verified X media download proof",
-    "human security review"
+    "human security review",
+    "embedded WeChat adapter unit tests",
+    "WeChat no-UI and explicit-resolver-consent contract",
+    "locked backend hash validation"
+  ],
+  "upstream_components": [
+    {
+      "name": "yt-dlp",
+      "source": "https://github.com/yt-dlp/yt-dlp",
+      "role": "general extractor runtime"
+    },
+    {
+      "name": "wx_channels_download",
+      "source": "https://github.com/ltaoo/wx_channels_download",
+      "role": "optional pinned local WeChat backend",
+      "license_note": "MIT with Commons Clause in pinned release"
+    }
   ]
 }

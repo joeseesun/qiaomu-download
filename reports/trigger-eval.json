@@ -2,7 +2,165 @@
   "ok": true,
   "total": 22,
   "passed": 22,
-  "summary": {"total": 22, "passed": 22},
+  "summary": {
+    "total": 22,
+    "passed": 22
+  },
   "missing_description_terms": [],
-  "buckets": {"should_trigger": 10, "should_not_trigger": 7, "near_neighbor": 5}
+  "results": [
+    {
+      "bucket": "should_trigger",
+      "text": "下载这个 https://x.com/user/status/123",
+      "expected": true,
+      "predicted": true,
+      "passed": true
+    },
+    {
+      "bucket": "should_trigger",
+      "text": "下载这个：https://v.douyin.com/example/",
+      "expected": true,
+      "predicted": true,
+      "passed": true
+    },
+    {
+      "bucket": "should_trigger",
+      "text": "保存这个 https://www.tiktok.com/@user/video/123",
+      "expected": true,
+      "predicted": true,
+      "passed": true
+    },
+    {
+      "bucket": "should_trigger",
+      "text": "把这个下载下来 https://www.xiaohongshu.com/explore/example",
+      "expected": true,
+      "predicted": true,
+      "passed": true
+    },
+    {
+      "bucket": "should_trigger",
+      "text": "download this https://www.instagram.com/reel/example/",
+      "expected": true,
+      "predicted": true,
+      "passed": true
+    },
+    {
+      "bucket": "should_trigger",
+      "text": "把这个保存下来 https://example.com/watch/123",
+      "expected": true,
+      "predicted": true,
+      "passed": true
+    },
+    {
+      "bucket": "should_trigger",
+      "text": "把这个 B 站视频保存成 1080p：https://www.bilibili.com/video/BV123",
+      "expected": true,
+      "predicted": true,
+      "passed": true
+    },
+    {
+      "bucket": "should_trigger",
+      "text": "提取这个 YouTube 视频的 MP3 https://youtu.be/abcdefghijk",
+      "expected": true,
+      "predicted": true,
+      "passed": true
+    },
+    {
+      "bucket": "should_trigger",
+      "text": "下载 Vimeo 视频字幕",
+      "expected": true,
+      "predicted": true,
+      "passed": true
+    },
+    {
+      "bucket": "should_trigger",
+      "text": "update yt-dlp then download this video",
+      "expected": true,
+      "predicted": true,
+      "passed": true
+    },
+    {
+      "bucket": "should_trigger",
+      "text": "下载这个视频号链接 https://weixin.qq.com/sph/example",
+      "expected": true,
+      "predicted": true,
+      "passed": true
+    },
+    {
+      "bucket": "should_not_trigger",
+      "text": "https://x.com/user/status/123",
+      "expected": false,
+      "predicted": false,
+      "passed": true
+    },
+    {
+      "bucket": "should_not_trigger",
+      "text": "看看这个链接 https://www.tiktok.com/@user/video/123",
+      "expected": false,
+      "predicted": false,
+      "passed": true
+    },
+    {
+      "bucket": "should_not_trigger",
+      "text": "帮我写一条 X 推文",
+      "expected": false,
+      "predicted": false,
+      "passed": true
+    },
+    {
+      "bucket": "should_not_trigger",
+      "text": "上传一个视频到 YouTube",
+      "expected": false,
+      "predicted": false,
+      "passed": true
+    },
+    {
+      "bucket": "should_not_trigger",
+      "text": "剪辑这个本地视频文件",
+      "expected": false,
+      "predicted": false,
+      "passed": true
+    },
+    {
+      "bucket": "should_not_trigger",
+      "text": "下载这本电子书",
+      "expected": false,
+      "predicted": false,
+      "passed": true
+    },
+    {
+      "bucket": "should_not_trigger",
+      "text": "下载这个 PDF https://example.com/report.pdf",
+      "expected": false,
+      "predicted": false,
+      "passed": true
+    },
+    {
+      "bucket": "near_neighbor",
+      "text": "总结这个 YouTube 视频",
+      "expected": false,
+      "predicted": false,
+      "passed": true
+    },
+    {
+      "bucket": "near_neighbor",
+      "text": "分析 B 站账号的数据",
+      "expected": false,
+      "predicted": false,
+      "passed": true
+    },
+    {
+      "bucket": "near_neighbor",
+      "text": "下载这张图片 https://example.com/cover.jpg",
+      "expected": false,
+      "predicted": false,
+      "passed": true
+    },
+    {
+      "bucket": "near_neighbor",
+      "text": "把这个网页保存为 PDF https://example.com/article",
+      "expected": false,
+      "predicted": false,
+      "passed": true
+    }
+  ]
 }

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Guarded, cross-platform yt-dlp wrapper for qiaomu-download."""
+"""Guarded universal video downloader with an embedded WeChat adapter."""
 
 from __future__ import annotations
 
@@ -25,7 +25,7 @@ import urllib.parse
 import urllib.request
 from urllib.parse import urlsplit, urlunsplit
 
-VERSION = "1.1.1"
+VERSION = "1.2.0"
 YT_DLP_RELEASE_API = "https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest"
 YT_DLP_RELEASE_LATEST = "https://github.com/yt-dlp/yt-dlp/releases/latest"
 MEDIA_SUFFIXES = {".mp4", ".mkv", ".webm", ".mov", ".m4a", ".mp3", ".opus", ".ogg", ".wav"}
@@ -51,6 +51,7 @@ KNOWN_PLATFORMS = {
     "tiktok.com": "TikTok", "instagram.com": "Instagram", "facebook.com": "Facebook",
     "twitch.tv": "Twitch", "reddit.com": "Reddit",
 }
+WECHAT_ADAPTER = Path(__file__).with_name("wechat_adapter.py")
 
 
 class SkillError(RuntimeError):
@@ -150,17 +151,59 @@ def normalize_url(raw: str) -> str:
             raise SkillError("validate", "private, loopback, and link-local addresses are not allowed")
     except ValueError:
         pass
-    if host == "weixin.qq.com" and parsed.path.startswith("/sph/"):
-        raise SkillError("route", "WeChat Channels links must use qiaomu-wx-video; do not automate the WeChat UI")
+    if host == "weixin.qq.com" and parsed.path.startswith("/sph/") and len(parsed.path) <= len("/sph/"):
+        raise SkillError("validate", "WeChat Channels URL is missing its share token")
     return urlunsplit(("https", host, parsed.path or "/", parsed.query, ""))
 
 
 def platform_name(url: str) -> str:
     host = (urlsplit(url).hostname or "").lower()
+    if host == "weixin.qq.com" and urlsplit(url).path.startswith("/sph/"):
+        return "WeChat Channels"
     for suffix, name in KNOWN_PLATFORMS.items():
         if host == suffix or host.endswith("." + suffix):
             return name
     return "yt-dlp generic extractor"
+
+
+def is_wechat_channels_url(url: str) -> bool:
+    parsed = urlsplit(url)
+    return (parsed.hostname or "").rstrip(".").lower() == "weixin.qq.com" and parsed.path.startswith("/sph/")
+
+
+def run_wechat_adapter(url: str, output_dir: Path, timeout: int, online: str,
+                       wait_page: int, single: bool) -> dict[str, Any]:
+    if not WECHAT_ADAPTER.is_file():
+        raise SkillError("dependency", "embedded WeChat Channels adapter is missing")
+    command = [sys.executable, str(WECHAT_ADAPTER), "download", url, "--dir", str(output_dir),
+               "--timeout", str(timeout), "--online", online, "--wait-page", str(max(0, wait_page))]
+    if single:
+        command.append("--single")
+    try:
+        completed = subprocess.run(command, check=False, capture_output=True, text=True, timeout=timeout + 30)
+    except subprocess.TimeoutExpired as exc:
+        raise SkillError("wechat_download", f"embedded WeChat adapter timed out after {timeout}s") from exc
+    try:
+        payload = json.loads(completed.stdout)
+    except json.JSONDecodeError as exc:
+        raise SkillError("wechat_download", "embedded WeChat adapter returned invalid JSON") from exc
+    if not isinstance(payload, dict):
+        raise SkillError("wechat_download", "embedded WeChat adapter returned a non-object result")
+    return payload
+
+
+def wechat_doctor(url: str | None = None) -> dict[str, Any]:
+    if not WECHAT_ADAPTER.is_file():
+        return {"ok": False, "adapter": "embedded-wechat", "error": "adapter missing"}
+    command = [sys.executable, str(WECHAT_ADAPTER), "doctor"]
+    if url:
+        command += ["--url", url]
+    completed = subprocess.run(command, check=False,
+                               capture_output=True, text=True, timeout=30)
+    try:
+        return json.loads(completed.stdout)
+    except json.JSONDecodeError:
+        return {"ok": False, "adapter": "embedded-wechat", "error": "doctor returned invalid JSON"}
 
 
 def detect_cookie_browser(mode: str) -> str | None:
@@ -267,7 +310,8 @@ def doctor(upgrade: bool, timeout: int) -> dict[str, Any]:
         "executable": str(Path(yt_dlp).resolve()), "installed_version": installed,
         "latest_stable_version": latest, "outdated": outdated, "manager": manager,
         "upgrade_requested": upgrade, "upgraded": upgraded},
-        "ffmpeg_version": optional_tool_version("ffmpeg"), "ffprobe_version": optional_tool_version("ffprobe")}
+        "ffmpeg_version": optional_tool_version("ffmpeg"), "ffprobe_version": optional_tool_version("ffprobe"),
+        "wechat_channels": wechat_doctor()}
 
 
 def load_metadata_once(url: str, browser: str | None, timeout: int) -> dict[str, Any]:
@@ -446,6 +490,12 @@ def build_parser() -> argparse.ArgumentParser:
     info = commands.add_parser("info"); add_url_args(info)
     download = commands.add_parser("download"); add_url_args(download, True)
     download.add_argument("--quality", choices=tuple(QUALITY_FORMATS), default="best")
+    download.add_argument("--wechat-online", choices=("never", "allowed"), default="never",
+                          help="allow sending only the public WeChat share URL to fixed resolvers")
+    download.add_argument("--wait-page", type=int, default=0,
+                          help="seconds to wait for a user-operated WeChat page connection")
+    download.add_argument("--single-version", action="store_true",
+                          help="for WeChat Channels, save one verified codec version")
     audio = commands.add_parser("audio"); add_url_args(audio, True)
     subtitles = commands.add_parser("subtitles"); add_url_args(subtitles, True)
     subtitles.add_argument("--langs", default="en.*,zh.*,ja.*")
@@ -459,7 +509,16 @@ def main() -> None:
             result = doctor(args.upgrade, args.timeout)
         else:
             url = normalize_url(args.url)
-            if args.command == "info":
+            if is_wechat_channels_url(url):
+                if args.command == "download":
+                    result = run_wechat_adapter(url, prepare_output_dir(args.output_dir), args.timeout,
+                                                args.wechat_online, args.wait_page, args.single_version)
+                elif args.command == "info":
+                    result = {"ok": True, "command": "info", "platform": "WeChat Channels",
+                              "url": url, "wechat_channels": wechat_doctor(url), "ui_automation_used": False}
+                else:
+                    raise SkillError("unsupported", f"{args.command} is not supported for WeChat Channels links")
+            elif args.command == "info":
                 metadata, browser, warnings = load_metadata(url, args.cookies_from_browser, args.timeout)
                 result = {"ok": True, "command": "info", **metadata_summary(metadata, url),
                           "cookies_from_browser": browser, "warnings": warnings}
@@ -473,6 +532,8 @@ def main() -> None:
                 result = download_subtitles(url, prepare_output_dir(args.output_dir), args.langs,
                                             args.cookies_from_browser, args.timeout)
         print(json.dumps(result, ensure_ascii=False, indent=2))
+        if not result.get("ok", False):
+            raise SystemExit(4)
     except SkillError as exc:
         print(json.dumps({"ok": False, "stage": exc.stage, "error": str(exc)}, ensure_ascii=False, indent=2))
         raise SystemExit(2)

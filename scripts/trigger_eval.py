@@ -9,8 +9,8 @@ from pathlib import Path
 URL_RE = re.compile(r"https://[^\s<>\]\[)]+", re.I)
 PLATFORMS = ("youtube", "youtu.be", "bilibili", "b站", "b23.tv", "x.com", "twitter", "vimeo", "tiktok", "douyin", "抖音", "xiaohongshu", "小红书", "instagram", "facebook", "twitch", "reddit", "weibo", "微博", "acfun", "视频", "video")
 ACTIONS = ("下载", "保存", "存下来", "mp3", "音频", "字幕", "download", "save this", "update yt-dlp")
-NEGATIVE = ("上传", "剪辑", "总结", "分析", "电子书", "weixin.qq.com/sph", "视频号", "pdf", "图片", "image", "网页")
-DESCRIPTION_TERMS = ("https url", "youtube", "bilibili", "x/twitter", "douyin", "tiktok", "xiaohongshu", "yt-dlp", "下载这个", "audio", "字幕", "qiaomu-wx-video")
+NEGATIVE = ("上传", "剪辑", "总结", "分析", "电子书", "pdf", "图片", "image", "网页")
+DESCRIPTION_TERMS = ("https url", "youtube", "bilibili", "x/twitter", "douyin", "tiktok", "xiaohongshu", "yt-dlp", "下载这个", "mp3", "字幕", "微信视频号")
 
 
 def predicts(text: str) -> bool:

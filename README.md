@@ -22,12 +22,13 @@ Agent：下载完成
 ## 为什么值得安装
 
 - **一句话触发**：只需“下载这个 + URL”，不用特意说明它是视频。
-- **多平台统一入口**：YouTube、B站、X、抖音、TikTok、小红书等使用同一种表达。
+- **多平台统一入口**：微信视频号、YouTube、B站、X、抖音、TikTok、小红书等使用同一种表达。
 - **自动跟进 yt-dlp**：每个新任务检查官方 stable release，仅在有新版时按现有包管理器升级。
 - **公开访问优先**：先匿名解析；只有公开提取失败时才按需使用本机浏览器 Cookie。
 - **下载后验真**：用 `ffprobe` 检查视频流、音频流、时长、分辨率和文件大小。
 - **保护已有文件**：默认单链接、禁止播放列表扩张、禁止覆盖、重复任务加锁。
 - **进度可见**：持续显示下载、合并和验证进度，完成后返回可点击的绝对路径。
+- **视频号完整内置**：同一个安装包包含视频号预检、在线解析、本地捕获、下载、解密、编码验证和后端安装器，不需要另装 Skill。
 - **微信和小红书更克制**：不使用 Computer Use 或 UI 自动化操作微信、小红书客户端及其内嵌页面。
 - **风控平台先提醒**：遇到小红书、抖音、TikTok、Instagram、Facebook、微博等平台，先说明只做链接解析；登录、验证码和安全验证始终由用户手动完成。
 
@@ -55,7 +56,7 @@ Agent：下载完成
 | SoundCloud | ✅ extractor | 音频、歌单、用户页面 |
 | Dailymotion / VK | ✅ extractor | 普通视频与部分集合 |
 | 其他 HTTPS 页面 | 🔎 动态探测 | yt-dlp 能识别媒体就下载，否则返回准确错误 |
-| 微信视频号 | 🔀 专用流程 | 自动转交 `qiaomu-wx-video`；绝不使用 UI 自动化操作微信 |
+| 微信视频号 | ✅ 内置适配器 | 本地连接优先；必要时只让用户手动播放一次；在线解析需先同意发送分享 URL |
 | 快手 | ⚠️ 暂不承诺 | 当前未发现明确稳定的 Kuaishou extractor |
 
 ## 微信视频号和小红书的安全边界
@@ -66,7 +67,9 @@ Agent：下载完成
 - 下载小红书等容易触发风控验证的平台前，先向用户说明本次仅使用 URL/yt-dlp 解析，不操作客户端或网页 UI；提醒后直接继续，不重复索要确认。
 - 不替用户输入账号、密码、短信验证码或 2FA。
 - 小红书优先直接解析分享 URL；公开解析失败时，只能按需读取用户本机已有浏览器 Cookie。
-- 微信视频号链接交给 `qiaomu-wx-video`。若必须打开或播放微信页面，由用户手动完成，Agent 只处理捕获到的媒体地址和下载结果。
+- 微信视频号由当前包内置适配器处理。若必须打开或播放微信页面，由用户手动完成，Agent 只处理本地接口和下载结果。
+- 未经明确同意，不把视频号分享 URL 发送给第三方解析器；即使同意，也不发送 Cookie、微信登录态、设备信息或抓包。
+- 首次使用本地视频号后端时，证书信任和系统代理修改分别说明影响并授权，任务结束恢复原代理快照。
 - 不绕过 DRM、付费墙、会员权限、地区限制或其他访问控制。
 - 公开解析失败后最多尝试一次浏览器 Cookie 回退；仍失败就停止，避免高频请求增加账号风险。
 
@@ -76,7 +79,7 @@ Agent：下载完成
 npx skills add joeseesun/qiaomu-download
 ```
 
-系统依赖：Python 3.10+、[yt-dlp](https://github.com/yt-dlp/yt-dlp)、`ffmpeg` 和 `ffprobe`。
+系统依赖：Python 3.10+、[yt-dlp](https://github.com/yt-dlp/yt-dlp)、`ffmpeg` 和 `ffprobe`。视频号脚本已随 Skill 安装；需要本地捕获时才按需安装并校验锁定的上游后端。
 
 macOS：
 
@@ -137,7 +140,7 @@ download this https://www.tiktok.com/@user/video/...
 | 只粘贴一个 URL | 不擅自下载 |
 | “总结这个 YouTube 视频” | 不触发下载 Skill |
 | “下载这张图片 / PDF / 网页” | 不触发视频下载 Skill |
-| 微信视频号 URL | 转交 `qiaomu-wx-video` |
+| “下载这个视频号：URL” | 触发内置视频号适配器 |
 
 ## 自动更新机制
 
@@ -183,6 +186,9 @@ python3 scripts/download.py info 'https://x.com/...'
 
 # 下载最高可用画质
 python3 scripts/download.py download 'https://www.bilibili.com/video/...'
+
+# 下载微信视频号（内置能力）
+python3 scripts/download.py download 'https://weixin.qq.com/sph/...'
 
 # 限制清晰度
 python3 scripts/download.py download URL --quality 1080p
@@ -237,7 +243,13 @@ python3 scripts/download.py doctor --upgrade
 
 ### 微信视频号链接
 
-使用 `qiaomu-wx-video` 专用流程。需要微信页面交互时由用户手动完成，Agent 不点击微信。
+直接使用同一个入口：
+
+```bash
+python3 scripts/download.py download 'https://weixin.qq.com/sph/...'
+```
+
+已有本地连接时会自动下载。返回 `manual_action_required` 时，由用户手动重新打开并播放一次，然后 Agent 用 `--wait-page 90` 继续。Agent 永远不点击、播放或刷新微信。若用户明确同意把本次公开分享 URL 发给固定解析器，可以添加 `--wechat-online allowed`。完整首次设置和恢复规则见 [`references/wechat-video.md`](references/wechat-video.md)。
 
 ## 验证与发布质量
 
@@ -249,7 +261,7 @@ python3 scripts/validate_skill.py .
 
 当前发布流程包含：单元测试、触发边界评测、包结构校验、秘密扫描、真实平台证据、PR 合并、GitHub Release 和全新环境安装验证。
 
-项目基于 [yt-dlp](https://github.com/yt-dlp/yt-dlp) 构建。请只下载你有权访问和保存的内容，并遵守目标平台条款与当地法律。
+通用下载基于 [yt-dlp](https://github.com/yt-dlp/yt-dlp)，视频号本地后端适配源自 [ltaoo/wx_channels_download](https://github.com/ltaoo/wx_channels_download)。后者的锁定版本使用带 Commons Clause 的 MIT 许可证，安装前请自行审阅。请只下载你有权访问和保存的内容，并遵守目标平台条款与当地法律。
 
 <!-- qiaomu-profile:start -->
 ## 关于向阳乔木

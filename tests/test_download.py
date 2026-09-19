@@ -27,11 +27,16 @@ class DownloadSkillTests(unittest.TestCase):
             with self.assertRaises(download.SkillError):
                 download.normalize_url(url)
 
-    def test_routes_wechat_without_ui_automation(self) -> None:
+    def test_accepts_wechat_for_embedded_adapter(self) -> None:
+        url = "https://weixin.qq.com/sph/abc"
+        self.assertEqual(download.normalize_url(url), url)
+        self.assertTrue(download.is_wechat_channels_url(url))
+        self.assertEqual(download.platform_name(url), "WeChat Channels")
+
+    def test_rejects_wechat_without_share_token(self) -> None:
         with self.assertRaises(download.SkillError) as caught:
-            download.normalize_url("https://weixin.qq.com/sph/abc")
-        self.assertEqual(caught.exception.stage, "route")
-        self.assertIn("qiaomu-wx-video", str(caught.exception))
+            download.normalize_url("https://weixin.qq.com/sph/")
+        self.assertEqual(caught.exception.stage, "validate")
 
     def test_platform_detection(self) -> None:
         self.assertEqual(download.platform_name("https://m.youtube.com/watch?v=x"), "YouTube")
@@ -96,6 +101,15 @@ class DownloadSkillTests(unittest.TestCase):
         help_text = parser.format_help()
         for command in ("doctor", "info", "download", "audio", "subtitles"):
             self.assertIn(command, help_text)
+
+    def test_wechat_adapter_result_is_forwarded(self) -> None:
+        payload = {"ok": True, "platform": "WeChat Channels", "files": [{"path": "/tmp/video.mp4"}]}
+        completed = download.subprocess.CompletedProcess([], 0, json.dumps(payload), "")
+        with patch.object(download.subprocess, "run", return_value=completed):
+            result = download.run_wechat_adapter(
+                "https://weixin.qq.com/sph/abc", Path("/tmp"), 30, "never", 0, False
+            )
+        self.assertEqual(result, payload)
 
 
 if __name__ == "__main__":

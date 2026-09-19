@@ -1,9 +1,29 @@
 {
   "cases": [
-    {"id": "x-info", "input": "Public X status URL", "expect": "extractor metadata or precise platform error"},
-    {"id": "youtube-info", "input": "Public YouTube URL", "expect": "YouTube metadata"},
-    {"id": "bilibili-info", "input": "Public Bilibili URL", "expect": "Bilibili metadata"},
-    {"id": "wechat-route", "input": "weixin.qq.com/sph URL", "expect": "route to qiaomu-wx-video without UI automation"},
-    {"id": "verified-download", "input": "Download fixture", "expect": "absolute file path with ffprobe evidence"}
+    {
+      "id": "x-info",
+      "input": "Public X status URL",
+      "expect": "extractor metadata or precise platform error"
+    },
+    {
+      "id": "youtube-info",
+      "input": "Public YouTube URL",
+      "expect": "YouTube metadata"
+    },
+    {
+      "id": "bilibili-info",
+      "input": "Public Bilibili URL",
+      "expect": "Bilibili metadata"
+    },
+    {
+      "id": "wechat-embedded",
+      "input": "weixin.qq.com/sph URL",
+      "expect": "embedded adapter returns verified files or a structured manual/setup state without UI automation"
+    },
+    {
+      "id": "verified-download",
+      "input": "Download fixture",
+      "expect": "absolute file path with ffprobe evidence"
+    }
   ]
 }

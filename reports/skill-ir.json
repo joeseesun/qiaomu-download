@@ -3,17 +3,31 @@
   "generated_at": "2026-09-19",
   "package": {
     "name": "qiaomu-download",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "owner": "向阳乔木",
     "maturity_tier": "governed",
     "lifecycle_stage": "production-candidate",
     "upstream_inspiration": "https://github.com/yt-dlp/yt-dlp"
   },
   "intent": {
-    "job_to_be_done": "Detect and download media when the user expresses download intent and supplies an HTTPS URL, without requiring the word video.",
-    "inputs": ["download or save intent plus one HTTPS URL", "bounded output preferences"],
-    "outputs": ["verified media", "subtitles", "metadata"],
-    "exclusions": ["DRM bypass", "playlists", "WeChat UI automation", "Xiaohongshu UI automation", "automated CAPTCHA or security verification"]
+    "job_to_be_done": "Dispatch an explicit media download request through one entrypoint, including a bundled governed WeChat Channels path, and return verified local artifacts.",
+    "inputs": [
+      "download or save intent plus one HTTPS URL",
+      "bounded output preferences"
+    ],
+    "outputs": [
+      "verified media",
+      "subtitles",
+      "metadata",
+      "structured WeChat setup/manual-action states"
+    ],
+    "exclusions": [
+      "DRM bypass",
+      "playlists",
+      "WeChat UI automation",
+      "Xiaohongshu UI automation",
+      "automated CAPTCHA or security verification"
+    ]
   },
   "triggers": {
     "should_trigger": 10,
@@ -21,13 +35,38 @@
     "near_neighbor": 5
   },
   "workflow": {
-    "compact_workflow": ["doctor --upgrade", "validate and route", "public metadata", "optional Cookie fallback", "download", "ffprobe", "absolute-path report"],
-    "gate_ladder": ["static", "unit", "trigger", "provider", "media verification", "release"],
-    "output_contract": ["final JSON", "ok true", "absolute paths", "codec duration and size evidence"]
+    "compact_workflow": [
+      "classify URL",
+      "embedded WeChat adapter or yt-dlp doctor",
+      "resolve or capture",
+      "download",
+      "codec/media verification",
+      "absolute-path report"
+    ],
+    "gate_ladder": [
+      "static",
+      "unit",
+      "trigger",
+      "provider",
+      "media verification",
+      "release"
+    ],
+    "output_contract": [
+      "final JSON",
+      "ok true only for verified files",
+      "absolute paths",
+      "codec duration and size evidence",
+      "no UI automation"
+    ]
   },
   "portability": {
     "canonical_format": "agent-skills",
-    "adapter_targets": ["openai", "claude", "generic", "agent-skills-compatible"]
+    "adapter_targets": [
+      "openai",
+      "claude",
+      "generic",
+      "agent-skills-compatible"
+    ]
   },
   "evidence_boundary": {
     "generated_reports_are_evidence": true,

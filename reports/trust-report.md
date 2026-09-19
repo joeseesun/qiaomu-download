@@ -3,7 +3,7 @@
 ## Boundaries
 
 - Input: one user-supplied HTTPS URL and optional output preferences.
-- Network: target website plus official `api.github.com/repos/yt-dlp/yt-dlp/releases/latest`.
+- Network: target website, official `api.github.com/repos/yt-dlp/yt-dlp/releases/latest`, the pinned backend release, and fixed WeChat resolvers only after explicit consent.
 - Credentials: optional local browser Cookie access only after anonymous extraction fails.
 - Filesystem: selected output directory, temporary advisory lock, newly created format fragments.
 
@@ -14,7 +14,9 @@
 - Download success requires ffprobe validation.
 - Duplicate downloads to the same output directory are locked.
 - Signals and timeouts stop child processes.
-- WeChat Channels links route to qiaomu-wx-video; WeChat UI automation is prohibited.
+- WeChat Channels use the embedded adapter; WeChat UI automation is prohibited.
+- Sending a WeChat share URL to a fixed resolver requires explicit consent; Cookies, login state and captures never leave the machine.
+- The optional local backend is pinned by release and SHA-256; certificate trust and proxy mutation remain separately authorized operations.
 - No embedded secrets or telemetry.
 
 ## Known limits

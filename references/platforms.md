@@ -12,4 +12,4 @@
 | Vimeo / Twitch / Reddit | 对应 extractor | 同上 | 以当前 yt-dlp 实际探测为准 |
 | 微博 / AcFun | 对应 extractor | 同上 | 以当前 yt-dlp 实际探测为准 |
 | 未知站点 | generic extractor | 同上 | 支持范围无法靠静态列表保证 |
-| 微信视频号 | qiaomu-wx-video | 专用下载流程 | 禁止微信 UI 自动化 |
+| 微信视频号 | 内置 `scripts/wechat_adapter.py` | 本地连接优先；在线解析需先取得分享 URL 授权 | 完整内置，不依赖其他 Skill；禁止微信 UI 自动化 |

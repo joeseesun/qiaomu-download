@@ -1,0 +1,41 @@
+{
+  "upstream": "ltaoo/wx_channels_download",
+  "tag": "v260714",
+  "released_at": "2026-07-15",
+  "source": "https://github.com/ltaoo/wx_channels_download/releases/tag/v260714",
+  "assets": {
+    "darwin-arm64": {
+      "name": "wx_video_download_v260714_darwin_arm64.zip",
+      "sha256": "fd2c2297acd9239d922414dd57b435faa40ffdd25ff3ad8f0f7b113208317e8c"
+    },
+    "darwin-x86_64": {
+      "name": "wx_video_download_v260714_darwin_x86_64.zip",
+      "sha256": "282933fc235cc92dcfbc41257c1e8b9b355cf0b413345edc4ae7c293b69b46a1"
+    },
+    "linux-arm64": {
+      "name": "wx_video_download_v260714_linux_arm64.tar.gz",
+      "sha256": "7e922ba567fbfd0749e6fbb31d6b191486fc15dd9f5c75f63ef446d16bebacb9"
+    },
+    "linux-x86": {
+      "name": "wx_video_download_v260714_linux_x86.tar.gz",
+      "sha256": "5f642fbe8d8e720f815e976db7bcc3bdc66b382214c9891ff392deb79dbdc83d"
+    },
+    "linux-x86_64": {
+      "name": "wx_video_download_v260714_linux_x86_64.tar.gz",
+      "sha256": "64c1c994d654fe9e22400b538f2f7217552ec015158838839ede6f7f875dcbdc"
+    },
+    "windows-arm64": {
+      "name": "wx_video_download_v260714_windows_arm64.zip",
+      "sha256": "be3be5da15a980dbaa36c7b8c2c3a4cb227d5d214b1868928cb77f8f7e8f2300"
+    },
+    "windows-x86_64": {
+      "name": "wx_video_download_v260714_windows_x86_64.zip",
+      "sha256": "1f10ee0f4e6d72c345fc34ab20d93f4271ede07d01e98e9edef172309f8fe598"
+    }
+  },
+  "evidence": {
+    "checksums_source": "upstream release checksum file plus local archive verification",
+    "tested": ["darwin-arm64"],
+    "missing_evidence": ["darwin-x86_64", "linux-arm64", "linux-x86", "linux-x86_64", "windows-arm64", "windows-x86_64"]
+  }
+}

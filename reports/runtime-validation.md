@@ -12,3 +12,11 @@ Date: 2026-09-19. Runtime: macOS arm64, Python 3.14, yt-dlp 2026.08.19. All prob
 | Cookie boundary | Pass | No browser Cookie used in any provider probe |
 
 The first X download attempt exposed a vertical-video quality-selector gap. The fixed selector treats 480p/720p/1080p as preferred caps and falls back to the best available format; the second run merged streams and passed ffprobe.
+
+
+## v1.2.0 integration validation
+
+- Embedded adapter doctor found all five packaged runtime components.
+- The universal entrypoint recognized a synthetic `weixin.qq.com/sph/` URL as WeChat Channels without invoking yt-dlp.
+- Unit coverage verifies structured setup/manual states, explicit online consent, signed-query preservation, nested API errors, minimal metadata retention, no-overwrite behavior, HTTPS-only transport and partial-transfer rejection.
+- No live WeChat page was opened or automated during this pass. Existing macOS arm64 H.264/HEVC evidence comes from the source specialist skill; a fresh end-to-end WeChat download is missing evidence for this integration branch.

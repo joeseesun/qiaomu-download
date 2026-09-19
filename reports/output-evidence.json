@@ -2,7 +2,11 @@
   "ok": true,
   "evidence_kind": "provider_backed",
   "validated_at": "2026-09-19",
-  "providers": ["YouTube", "Bilibili", "X/Twitter"],
+  "providers": [
+    "YouTube",
+    "Bilibili",
+    "X/Twitter"
+  ],
   "cookie_mode": "none",
   "cases": [
     {
@@ -39,5 +43,14 @@
       "width": 512,
       "height": 384
     }
-  ]
+  ],
+  "integration": {
+    "wechat_channels": {
+      "embedded_adapter_doctor": true,
+      "unit_tests": 15,
+      "live_download_rerun": false,
+      "live_download_evidence": "inherited from qiaomu-wx-video specialist implementation",
+      "missing_evidence": "fresh end-to-end WeChat download through qiaomu-download 1.2.0"
+    }
+  }
 }
