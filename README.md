@@ -1,17 +1,24 @@
 # qiaomu-download
 
-给 Codex/Agent 使用的通用视频下载 Skill：一句“下载这个链接”，自动检查最新版 `yt-dlp`，下载单个视频，并用 `ffprobe` 验证文件确实可播放。
+给 Codex/Agent 使用的通用视频下载 Skill：只说“下载这个：URL”即可，不需要补充“视频”。Skill 会自动检查最新版 `yt-dlp`、探测页面媒体、下载单个视频，并用 `ffprobe` 验证文件确实可播放。
 
 ## 支持什么
 
 - YouTube、B站、X/Twitter 为一级目标
-- Vimeo、TikTok、Instagram、Facebook、Twitch、Reddit，以及 yt-dlp extractor 能处理的公开页面
+- 抖音、TikTok、小红书、Instagram、Facebook、Vimeo、Twitch、Reddit、微博、AcFun，以及 yt-dlp extractor 能处理的公开页面
 - 视频、MP3、字幕、元数据
 - `best`、1080p、720p、480p
 - 匿名优先，失败后才按需读取本机浏览器 Cookie
 - 自动检查 yt-dlp 官方 stable release，并根据 Homebrew、pip、pipx、uv 或官方独立版选择升级方式
 
 微信视频号使用独立的 `qiaomu-wx-video`，本 Skill 不会操作微信客户端或微信内嵌页面。
+
+## 触发规则
+
+- `下载这个：https://...`、`保存这个 https://...`、`download this https://...` 会触发，即使没有出现“视频”二字。
+- 已知视频平台按域名路由；其他 HTTPS URL 交给 yt-dlp extractor 探测，检测到媒体后下载。
+- 只有一个裸链接、没有下载或保存意图时，不会擅自下载。
+- 下载 PDF、图片、网页、电子书，以及上传、剪辑、总结等相邻任务不会触发。
 
 ## 安装
 
@@ -39,6 +46,9 @@ brew install yt-dlp ffmpeg
 你可以直接这样说：
 
 - `下载这个 https://x.com/...`
+- `下载这个：https://v.douyin.com/...`
+- `保存这个 https://www.xiaohongshu.com/explore/...`
+- `download this https://www.tiktok.com/@user/video/...`
 - `把这个 B 站视频下载成 1080p：https://www.bilibili.com/video/...`
 - `提取这个 YouTube 视频的 MP3：https://youtu.be/...`
 - `下载这个视频的中英文字幕：https://youtube.com/watch?v=...`

@@ -1,8 +1,8 @@
 {
   "ok": true,
-  "total": 12,
-  "passed": 12,
-  "summary": {"total": 12, "passed": 12},
+  "total": 22,
+  "passed": 22,
+  "summary": {"total": 22, "passed": 22},
   "missing_description_terms": [],
-  "buckets": {"should_trigger": 5, "should_not_trigger": 4, "near_neighbor": 3}
+  "buckets": {"should_trigger": 10, "should_not_trigger": 7, "near_neighbor": 5}
 }

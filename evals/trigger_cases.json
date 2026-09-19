@@ -1,20 +1,30 @@
 {
   "should_trigger": [
     {"text": "下载这个 https://x.com/user/status/123"},
+    {"text": "下载这个：https://v.douyin.com/example/"},
+    {"text": "保存这个 https://www.tiktok.com/@user/video/123"},
+    {"text": "把这个下载下来 https://www.xiaohongshu.com/explore/example"},
+    {"text": "download this https://www.instagram.com/reel/example/"},
+    {"text": "把这个保存下来 https://example.com/watch/123"},
     {"text": "把这个 B 站视频保存成 1080p：https://www.bilibili.com/video/BV123"},
     {"text": "提取这个 YouTube 视频的 MP3 https://youtu.be/abcdefghijk"},
     {"text": "下载 Vimeo 视频字幕"},
     {"text": "update yt-dlp then download this video"}
   ],
   "should_not_trigger": [
+    {"text": "https://x.com/user/status/123"},
+    {"text": "看看这个链接 https://www.tiktok.com/@user/video/123"},
     {"text": "帮我写一条 X 推文"},
     {"text": "上传一个视频到 YouTube"},
     {"text": "剪辑这个本地视频文件"},
-    {"text": "下载这本电子书"}
+    {"text": "下载这本电子书"},
+    {"text": "下载这个 PDF https://example.com/report.pdf"}
   ],
   "near_neighbor": [
     {"text": "总结这个 YouTube 视频"},
     {"text": "分析 B 站账号的数据"},
-    {"text": "下载这个视频号链接 https://weixin.qq.com/sph/example"}
+    {"text": "下载这个视频号链接 https://weixin.qq.com/sph/example"},
+    {"text": "下载这张图片 https://example.com/cover.jpg"},
+    {"text": "把这个网页保存为 PDF https://example.com/article"}
   ]
 }

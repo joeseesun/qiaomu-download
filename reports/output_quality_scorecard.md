@@ -2,7 +2,7 @@
 
 | Requirement | Gate | Status |
 |---|---|---|
-| Single-link deterministic routing | 11 unit tests + 12 trigger fixtures | Passed |
+| Single-link deterministic routing | 11 unit tests + 22 trigger fixtures | Passed |
 | YouTube/Bilibili/X extraction | Three provider-backed metadata probes | Passed |
 | File is playable | X download verified with ffprobe | Passed |
 | No overwrite or playlist expansion | Static contract + unit tests | Passed |

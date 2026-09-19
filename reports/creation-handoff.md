@@ -1,4 +1,4 @@
-# Creation handoff — qiaomu-download 1.0.0
+# Creation handoff — qiaomu-download 1.1.0
 
 ## Studied skills and sources
 
@@ -13,7 +13,7 @@ The design studied local `qiaomu-youtube-download`, `lwmxiaobei/yt-dlp-skill`, `
 ## Evidence claims
 
 - **Design advantage:** a concise agent UX with conservative authorization, privacy and artifact checks.
-- **Validated:** 11 unit tests, 12/12 trigger cases, governed package validation, official release check, three provider metadata probes and one ffprobe-verified X download.
+- **Validated:** 11 unit tests, 22/22 trigger cases including URL-only object inference with explicit download intent, governed package validation, official release check, three provider metadata probes and one ffprobe-verified X download.
 - **Hypothesis:** sites beyond YouTube, Bilibili and X work when their current yt-dlp extractor and access conditions permit.
 
 ## Release status

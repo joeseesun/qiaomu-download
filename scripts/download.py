@@ -25,7 +25,7 @@ import urllib.parse
 import urllib.request
 from urllib.parse import urlsplit, urlunsplit
 
-VERSION = "1.0.0"
+VERSION = "1.1.0"
 YT_DLP_RELEASE_API = "https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest"
 YT_DLP_RELEASE_LATEST = "https://github.com/yt-dlp/yt-dlp/releases/latest"
 MEDIA_SUFFIXES = {".mp4", ".mkv", ".webm", ".mov", ".m4a", ".mp3", ".opus", ".ogg", ".wav"}

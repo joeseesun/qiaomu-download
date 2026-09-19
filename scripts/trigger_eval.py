@@ -3,17 +3,20 @@
 
 import argparse
 import json
+import re
 from pathlib import Path
 
-PLATFORMS = ("youtube", "youtu.be", "bilibili", "b站", "b23.tv", "x.com", "twitter", "vimeo", "tiktok", "视频", "video")
-ACTIONS = ("下载", "保存", "mp3", "音频", "字幕", "download", "update yt-dlp")
-NEGATIVE = ("上传", "剪辑", "总结", "分析", "电子书", "weixin.qq.com/sph", "视频号")
-DESCRIPTION_TERMS = ("youtube", "bilibili", "x/twitter", "yt-dlp", "下载", "audio", "字幕", "qiaomu-wx-video")
+URL_RE = re.compile(r"https://[^\s<>\]\[)]+", re.I)
+PLATFORMS = ("youtube", "youtu.be", "bilibili", "b站", "b23.tv", "x.com", "twitter", "vimeo", "tiktok", "douyin", "抖音", "xiaohongshu", "小红书", "instagram", "facebook", "twitch", "reddit", "weibo", "微博", "acfun", "视频", "video")
+ACTIONS = ("下载", "保存", "存下来", "mp3", "音频", "字幕", "download", "save this", "update yt-dlp")
+NEGATIVE = ("上传", "剪辑", "总结", "分析", "电子书", "weixin.qq.com/sph", "视频号", "pdf", "图片", "image", "网页")
+DESCRIPTION_TERMS = ("https url", "youtube", "bilibili", "x/twitter", "douyin", "tiktok", "xiaohongshu", "yt-dlp", "下载这个", "audio", "字幕", "qiaomu-wx-video")
 
 
 def predicts(text: str) -> bool:
     value = text.lower()
-    return any(x in value for x in PLATFORMS) and any(x in value for x in ACTIONS) and not any(x in value for x in NEGATIVE)
+    has_target = bool(URL_RE.search(value)) or any(x in value for x in PLATFORMS)
+    return has_target and any(x in value for x in ACTIONS) and not any(x in value for x in NEGATIVE)
 
 
 def description(root: Path) -> str:

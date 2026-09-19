@@ -1,6 +1,6 @@
 {
   "name": "qiaomu-download",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "owner": "向阳乔木",
   "updated_at": "2026-09-19",
   "status": "release-candidate",
@@ -11,11 +11,11 @@
   "runtime": "python>=3.10",
   "upstream_inspiration": "https://github.com/yt-dlp/yt-dlp",
   "dependencies": ["yt-dlp", "ffmpeg", "ffprobe"],
-  "platforms": ["youtube", "bilibili", "x", "generic-yt-dlp"],
+  "platforms": ["youtube", "bilibili", "x", "douyin", "tiktok", "xiaohongshu", "instagram", "facebook", "vimeo", "twitch", "reddit", "weibo", "acfun", "generic-yt-dlp"],
   "intent": {
-    "job_to_be_done": "Download or inspect one authorized online video URL and return verified local artifacts.",
+    "job_to_be_done": "When the user expresses download intent and provides an HTTPS URL, detect downloadable media and return verified local artifacts without requiring the word video.",
     "target_users": ["Qiaomu operator", "public skill installer"],
-    "inputs": ["one HTTPS media URL", "optional quality, subtitle language, cookie, and output preferences"],
+    "inputs": ["explicit download or save intent plus one HTTPS URL", "optional quality, subtitle language, cookie, and output preferences"],
     "outputs": ["verified video or MP3", "downloaded subtitles", "structured metadata"],
     "exclusions": ["DRM bypass", "access-control bypass", "unbounded playlists", "silent credential export", "WeChat UI automation"]
   },
