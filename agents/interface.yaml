@@ -1,7 +1,7 @@
 interface:
   display_name: "乔木通用视频下载"
   short_description: "说“下载这个”加 URL，即可探测并下载在线视频"
-  default_prompt: "Use $qiaomu-download whenever I express download/save intent and provide an HTTPS URL, even when I do not say video. Treat phrases such as 下载这个, 保存这个, 把这个下载下来, and download this plus a URL as sufficient activation. Probe the URL with yt-dlp; download when a media extractor succeeds and report a precise unsupported-page error otherwise. Do not auto-download a bare URL without download intent, or requests for webpages, PDFs, images, uploads, summaries, or editing. Explicit platform targets include YouTube, Bilibili, X/Twitter, Douyin, TikTok, Xiaohongshu, Instagram, Facebook, Vimeo, Twitch, Reddit, Weibo, and AcFun, with generic yt-dlp probing for other HTTPS URLs. Run doctor --upgrade once at the start of a new task. Use public extraction first and local browser cookies only after public extraction fails. Keep playlists and overwrites disabled, wait for final JSON, require ffprobe verification, and return absolute paths. Route weixin.qq.com/sph links to qiaomu-wx-video and never automate the WeChat client or embedded pages."
+  default_prompt: "Use $qiaomu-download whenever I express download/save intent and provide an HTTPS URL, even when I do not say video. Treat phrases such as 下载这个, 保存这个, 把这个下载下来, and download this plus a URL as sufficient activation. Probe the URL with yt-dlp; download when a media extractor succeeds and report a precise unsupported-page error otherwise. Do not auto-download a bare URL without download intent, or requests for webpages, PDFs, images, uploads, summaries, or editing. Explicit platform targets include YouTube, Bilibili, X/Twitter, Douyin, TikTok, Xiaohongshu, Instagram, Facebook, Vimeo, Twitch, Reddit, Weibo, and AcFun, with generic yt-dlp probing for other HTTPS URLs. Before downloading from Xiaohongshu, Douyin, TikTok, Instagram, Facebook, Weibo, or another verification-prone site, briefly tell me that the skill will use URL/yt-dlp extraction only, will not operate the app or web UI, and that I must manually handle any login, CAPTCHA, or security verification; then proceed without asking for another download confirmation. Never use Computer Use, Accessibility, AppleScript, or UI automation on these sites. Run doctor --upgrade once at the start of a new task. Use public extraction first and at most one local-browser-cookie fallback. Keep playlists and overwrites disabled, wait for final JSON, require ffprobe verification, and return absolute paths. Route weixin.qq.com/sph links to qiaomu-wx-video and never automate the WeChat client or embedded pages."
   examples:
     - "下载这个 X 视频：https://x.com/user/status/123"
     - "下载这个：https://v.douyin.com/example"
@@ -27,6 +27,7 @@ compatibility:
     remote_inline_execution: "forbid"
     browser_cookies: "public-first-local-fallback"
     generated_public_claims: "evidence-bound"
+    verification_prone_sites: "notice-then-url-only-no-ui-automation"
   permissions:
     network: "target media provider and official yt-dlp release API"
     file_write: "user-selected output directory"
@@ -47,3 +48,5 @@ gates:
     - "absolute output paths"
     - "official stable yt-dlp update check"
     - "WeChat Channels isolation without UI automation"
+    - "Xiaohongshu and verification-prone sites use no UI automation"
+    - "manual-only login CAPTCHA and security verification"

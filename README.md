@@ -1,24 +1,74 @@
 # qiaomu-download
 
-给 Codex/Agent 使用的通用视频下载 Skill：只说“下载这个：URL”即可，不需要补充“视频”。Skill 会自动检查最新版 `yt-dlp`、探测页面媒体、下载单个视频，并用 `ffprobe` 验证文件确实可播放。
+> 对 Agent 说一句 **“下载这个：URL”**，它会识别页面里的视频、更新下载引擎、保存最高可用画质，并验证文件真的能播放。
 
-## 支持什么
+[![Release](https://img.shields.io/github/v/release/joeseesun/qiaomu-download?style=flat-square)](https://github.com/joeseesun/qiaomu-download/releases)
+[![License](https://img.shields.io/github/license/joeseesun/qiaomu-download?style=flat-square)](LICENSE)
+[![Powered by yt-dlp](https://img.shields.io/badge/powered%20by-yt--dlp-red?style=flat-square)](https://github.com/yt-dlp/yt-dlp)
 
-- YouTube、B站、X/Twitter 为一级目标
-- 抖音、TikTok、小红书、Instagram、Facebook、Vimeo、Twitch、Reddit、微博、AcFun，以及 yt-dlp extractor 能处理的公开页面
-- 视频、MP3、字幕、元数据
-- `best`、1080p、720p、480p
-- 匿名优先，失败后才按需读取本机浏览器 Cookie
-- 自动检查 yt-dlp 官方 stable release，并根据 Homebrew、pip、pipx、uv 或官方独立版选择升级方式
+不记命令，不找解析网站，不手动挑音视频流。复制链接，说“下载这个”，剩下的交给 Skill。
 
-微信视频号使用独立的 `qiaomu-wx-video`，本 Skill 不会操作微信客户端或微信内嵌页面。
+```text
+你：下载这个：https://x.com/vista8/status/2100589909136523770
 
-## 触发规则
+Agent：下载完成
+文件：~/Downloads/向阳乔木 - 多模态强还是不错的 […].mp4
+画面：1728 × 1080 · H.264
+音频：AAC
+时长：39.38 秒
+验证：ffprobe 通过
+```
 
-- `下载这个：https://...`、`保存这个 https://...`、`download this https://...` 会触发，即使没有出现“视频”二字。
-- 已知视频平台按域名路由；其他 HTTPS URL 交给 yt-dlp extractor 探测，检测到媒体后下载。
-- 只有一个裸链接、没有下载或保存意图时，不会擅自下载。
-- 下载 PDF、图片、网页、电子书，以及上传、剪辑、总结等相邻任务不会触发。
+## 为什么值得安装
+
+- **一句话触发**：只需“下载这个 + URL”，不用特意说明它是视频。
+- **多平台统一入口**：YouTube、B站、X、抖音、TikTok、小红书等使用同一种表达。
+- **自动跟进 yt-dlp**：每个新任务检查官方 stable release，仅在有新版时按现有包管理器升级。
+- **公开访问优先**：先匿名解析；只有公开提取失败时才按需使用本机浏览器 Cookie。
+- **下载后验真**：用 `ffprobe` 检查视频流、音频流、时长、分辨率和文件大小。
+- **保护已有文件**：默认单链接、禁止播放列表扩张、禁止覆盖、重复任务加锁。
+- **进度可见**：持续显示下载、合并和验证进度，完成后返回可点击的绝对路径。
+- **微信和小红书更克制**：不使用 Computer Use 或 UI 自动化操作微信、小红书客户端及其内嵌页面。
+- **风控平台先提醒**：遇到小红书、抖音、TikTok、Instagram、Facebook、微博等平台，先说明只做链接解析；登录、验证码和安全验证始终由用户手动完成。
+
+## 支持哪些平台
+
+平台能力来自当前安装的 `yt-dlp` extractor。站点会改版，因此“存在 extractor”代表可以动态探测，不代表任何链接永久可用。
+
+| 平台 | 状态 | 能力与限制 |
+|---|---|---|
+| YouTube / YouTube Shorts | ✅ 已验证 | 视频、MP3、字幕、元数据；受限内容可能需要浏览器 Cookie |
+| B站 / Bilibili / b23.tv | ✅ 已验证 | 普通视频、番剧等；高清、会员或登录内容受账号权限约束 |
+| X / Twitter | ✅ 已验证下载 | 普通帖子视频；已完成真实下载与 `ffprobe` 验证 |
+| 抖音 / Douyin | ✅ extractor | 支持分享短链探测；页面限制时可能需要本机会话 |
+| TikTok | ✅ extractor | 普通视频为主要目标；直播和部分集合能力取决于当前 extractor |
+| 小红书 / Xiaohongshu | ✅ extractor | 仅使用链接解析与命令行下载；不自动点击、刷新或操作小红书 UI |
+| Instagram | ✅ extractor | Posts、Reels、Stories；私密内容需要用户已有会话 |
+| Facebook | ✅ extractor | 普通视频与 Reels；登录可见内容受账号权限约束 |
+| Vimeo | ✅ extractor | 普通视频、频道、活动；付费与 DRM 内容不绕过 |
+| Twitch | ✅ extractor | Clips、VOD、直播 |
+| Reddit | ✅ extractor | 帖子内视频 |
+| 微博 / Weibo | ✅ extractor | 普通视频与用户视频 |
+| AcFun | ✅ extractor | 普通视频与番剧 |
+| Pinterest | ✅ extractor | 视频 Pin 与合集 |
+| LinkedIn | ✅ extractor | 普通视频、活动、课程；部分内容需要登录 |
+| SoundCloud | ✅ extractor | 音频、歌单、用户页面 |
+| Dailymotion / VK | ✅ extractor | 普通视频与部分集合 |
+| 其他 HTTPS 页面 | 🔎 动态探测 | yt-dlp 能识别媒体就下载，否则返回准确错误 |
+| 微信视频号 | 🔀 专用流程 | 自动转交 `qiaomu-wx-video`；绝不使用 UI 自动化操作微信 |
+| 快手 | ⚠️ 暂不承诺 | 当前未发现明确稳定的 Kuaishou extractor |
+
+## 微信视频号和小红书的安全边界
+
+用户担心客户端自动化导致风控或封号，因此本项目明确执行以下规则：
+
+- 不使用 Computer Use、Accessibility、AppleScript 或其他 UI 自动化点击微信、小红书。
+- 下载小红书等容易触发风控验证的平台前，先向用户说明本次仅使用 URL/yt-dlp 解析，不操作客户端或网页 UI；提醒后直接继续，不重复索要确认。
+- 不替用户输入账号、密码、短信验证码或 2FA。
+- 小红书优先直接解析分享 URL；公开解析失败时，只能按需读取用户本机已有浏览器 Cookie。
+- 微信视频号链接交给 `qiaomu-wx-video`。若必须打开或播放微信页面，由用户手动完成，Agent 只处理捕获到的媒体地址和下载结果。
+- 不绕过 DRM、付费墙、会员权限、地区限制或其他访问控制。
+- 公开解析失败后最多尝试一次浏览器 Cookie 回退；仍失败就停止，避免高频请求增加账号风险。
 
 ## 安装
 
@@ -26,13 +76,21 @@
 npx skills add joeseesun/qiaomu-download
 ```
 
-系统依赖：Python 3.10+、[yt-dlp](https://github.com/yt-dlp/yt-dlp)、`ffmpeg`/`ffprobe`。macOS 可使用：
+系统依赖：Python 3.10+、[yt-dlp](https://github.com/yt-dlp/yt-dlp)、`ffmpeg` 和 `ffprobe`。
+
+macOS：
 
 ```bash
 brew install yt-dlp ffmpeg
 ```
 
-如果 Homebrew 提示 Xcode license，请先在终端执行 Apple 给出的许可命令，再重试安装。
+Ubuntu / Debian：
+
+```bash
+sudo apt update
+sudo apt install ffmpeg
+python3 -m pip install --user --upgrade yt-dlp
+```
 
 ### 前置条件检查
 
@@ -41,67 +99,157 @@ brew install yt-dlp ffmpeg
 - [ ] `ffmpeg -version` 与 `ffprobe -version` 可以正常运行
 - [ ] 目标链接是你有权访问和保存的内容
 
-## Agent 用法
+## 你可以直接这样说
 
-你可以直接这样说：
+### 下载视频
 
-- `下载这个 https://x.com/...`
-- `下载这个：https://v.douyin.com/...`
-- `保存这个 https://www.xiaohongshu.com/explore/...`
-- `download this https://www.tiktok.com/@user/video/...`
-- `把这个 B 站视频下载成 1080p：https://www.bilibili.com/video/...`
-- `提取这个 YouTube 视频的 MP3：https://youtu.be/...`
-- `下载这个视频的中英文字幕：https://youtube.com/watch?v=...`
+```text
+下载这个：https://v.douyin.com/...
+保存这个 https://www.xiaohongshu.com/explore/...
+download this https://www.tiktok.com/@user/video/...
+把这个 B 站视频下载成 1080p：https://www.bilibili.com/video/...
+```
 
-## 命令行
+### 提取音频
+
+```text
+把这个 YouTube 视频提取成 MP3：https://youtu.be/...
+```
+
+### 下载字幕
+
+```text
+下载这个视频的中英文字幕：https://youtube.com/watch?v=...
+```
+
+### 查看信息但不下载
+
+```text
+查看这个视频的信息：https://vimeo.com/...
+```
+
+## 如何判断是否触发
+
+| 用户表达 | 处理方式 |
+|---|---|
+| “下载这个：URL” | 触发，先探测媒体，再下载 |
+| “保存这个 URL” | 触发，先探测媒体，再下载 |
+| 只粘贴一个 URL | 不擅自下载 |
+| “总结这个 YouTube 视频” | 不触发下载 Skill |
+| “下载这张图片 / PDF / 网页” | 不触发视频下载 Skill |
+| 微信视频号 URL | 转交 `qiaomu-wx-video` |
+
+## 自动更新机制
+
+Skill 在每个新下载任务开始时运行：
 
 ```bash
 python3 scripts/download.py doctor --upgrade
-python3 scripts/download.py info 'https://x.com/...'
-python3 scripts/download.py download 'https://www.bilibili.com/video/...' --quality 1080p
-python3 scripts/download.py audio 'https://youtu.be/...'
-python3 scripts/download.py subtitles 'https://youtube.com/watch?v=...' --langs 'zh.*,en.*'
 ```
 
-默认输出到 `~/Downloads`。可用 `--dir` 指定目录，或设置 `QIAOMU_DOWNLOAD_OUTPUT`。
+它会读取 yt-dlp 官方 GitHub stable release，并识别当前安装来源：
+
+- Homebrew → `brew upgrade yt-dlp`
+- pip 虚拟环境 → `python -m pip install --upgrade yt-dlp`
+- pipx → `pipx upgrade yt-dlp`
+- uv tool → `uv tool upgrade yt-dlp`
+- 官方独立版 → `yt-dlp -U`
+
+没有新版时不会重复安装。更新失败时保留原版本，并给出具体失败阶段。
 
 ## Cookie 与隐私
 
-默认 `--cookies-from-browser auto` 先做公开访问；只有失败后才尝试本机浏览器 Cookie。可以明确禁用：
+默认策略是 `public first`：
+
+1. 先不用 Cookie 读取媒体信息。
+2. 公开提取失败时，才尝试本机 Chrome、Edge、Firefox 或 Safari Cookie。
+3. 不复制、不保存、不打印 Cookie 内容。
+4. 可明确禁用 Cookie：
 
 ```bash
 python3 scripts/download.py download URL --cookies-from-browser none
 ```
 
-Skill 不保存或打印 Cookie，不绕过 DRM、付费墙或访问控制。请只下载你有权访问和保存的内容。
+## 命令行
 
-## 常见问题
+Agent 通常会自动调用，也可以直接运行：
+
+```bash
+# 检查并更新 yt-dlp
+python3 scripts/download.py doctor --upgrade
+
+# 读取媒体信息
+python3 scripts/download.py info 'https://x.com/...'
+
+# 下载最高可用画质
+python3 scripts/download.py download 'https://www.bilibili.com/video/...'
+
+# 限制清晰度
+python3 scripts/download.py download URL --quality 1080p
+
+# 提取 MP3
+python3 scripts/download.py audio 'https://youtu.be/...'
+
+# 下载字幕
+python3 scripts/download.py subtitles URL --langs 'zh.*,en.*'
+```
+
+默认保存到 `~/Downloads`。使用 `--dir` 或 `QIAOMU_DOWNLOAD_OUTPUT` 可以指定目录。
+
+## 下载完成的标准
+
+Skill 不会因为 `yt-dlp` 进程返回 0 就直接宣布成功。视频或音频必须继续通过 `ffprobe`：
+
+- 文件存在且大小大于 0
+- 存在预期的视频流或音频流
+- 时长有效
+- 返回容器、编码、分辨率、时长和绝对路径
+
+中断或失败时，只清理本次任务新产生的格式分片，不删除已有文件。
 
 ## Troubleshooting
 
-**提示 `yt-dlp not found`**：运行 `python3 scripts/download.py doctor`，按输出安装 yt-dlp。
+### `yt-dlp not found`
 
-**提示 `ffmpeg not found`**：安装 ffmpeg；`ffprobe` 会随 ffmpeg 一起安装。
-
-**B站高清或登录内容失败**：保持浏览器已登录，重试 `auto`，或明确指定 `--cookies-from-browser chrome`。
-
-**X 链接抽取失败**：先执行 `doctor --upgrade`，站点改版通常需要新版 yt-dlp extractor。
-
-**视频号链接**：交给 `qiaomu-wx-video`；本 Skill 不自动化微信 UI。
-
-## 验证
+安装 yt-dlp 后运行：
 
 ```bash
-python3 scripts/test_download.py
+python3 scripts/download.py doctor
+```
+
+### `ffmpeg not found` 或 `ffprobe not found`
+
+安装 `ffmpeg`。多数包管理器会同时提供 `ffprobe`。
+
+### X、抖音、TikTok 或小红书突然解析失败
+
+这些平台经常调整页面和接口。先运行：
+
+```bash
+python3 scripts/download.py doctor --upgrade
+```
+
+如果公开解析仍失败，保持浏览器已登录并让 Skill 使用 `auto` Cookie 模式。它不会操作网站 UI。
+
+### B站高清画质不可用
+
+画质可能与登录状态、会员权限和视频本身有关。Skill 可以读取已有浏览器会话，但不会绕过权限。
+
+### 微信视频号链接
+
+使用 `qiaomu-wx-video` 专用流程。需要微信页面交互时由用户手动完成，Agent 不点击微信。
+
+## 验证与发布质量
+
+```bash
+python3 -m unittest discover -s tests -p 'test_*.py'
 python3 scripts/trigger_eval.py .
 python3 scripts/validate_skill.py .
 ```
 
-核心运行时来自 [yt-dlp](https://github.com/yt-dlp/yt-dlp)，平台支持以当前 extractor 的实际探测结果为准。
+当前发布流程包含：单元测试、触发边界评测、包结构校验、秘密扫描、真实平台证据、PR 合并、GitHub Release 和全新环境安装验证。
 
-## 设计与验证
-
-技能包含单元测试、触发评测、包结构校验、真实平台探测报告和安全审计材料，详见 `reports/`。
+项目基于 [yt-dlp](https://github.com/yt-dlp/yt-dlp) 构建。请只下载你有权访问和保存的内容，并遵守目标平台条款与当地法律。
 
 <!-- qiaomu-profile:start -->
 ## 关于向阳乔木

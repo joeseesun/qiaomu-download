@@ -25,7 +25,7 @@ def main() -> None:
     script = (root / "scripts/download.py").read_text(encoding="utf-8") if (root / "scripts/download.py").exists() else ""
     if not skill.startswith("---\n") or "name: qiaomu-download" not in skill:
         failures.append("invalid SKILL.md frontmatter")
-    for term in ("Trust boundary", "Rollback boundary", "qiaomu-wx-video", "不得使用 Computer Use"):
+    for term in ("Trust boundary", "Rollback boundary", "qiaomu-wx-video", "不得使用 Computer Use", "小红书", "安全验证", "最多尝试一次 Cookie 回退"):
         if term not in skill:
             failures.append(f"SKILL.md missing contract: {term}")
     for term in ("--no-playlist", "--no-overwrites", "--cookies-from-browser", "ffprobe",
@@ -35,7 +35,7 @@ def main() -> None:
     if re.search(r"(?:API_KEY|TOKEN|COOKIE)\s*=\s*['\"][^'\"]+['\"]", script):
         failures.append("hard-coded credential-like value")
     manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8")) if (root / "manifest.json").exists() else {}
-    if manifest.get("name") != "qiaomu-download" or manifest.get("version") != "1.1.0":
+    if manifest.get("name") != "qiaomu-download" or manifest.get("version") != "1.1.1":
         failures.append("manifest identity mismatch")
     artifacts = [str(p.relative_to(root)) for p in root.rglob("*") if p.is_file()
                  and "__pycache__" not in p.parts and p.suffix in {".pyc", ".part", ".ytdl"}]

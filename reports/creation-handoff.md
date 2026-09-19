@@ -1,4 +1,4 @@
-# Creation handoff — qiaomu-download 1.1.0
+# Creation handoff — qiaomu-download 1.1.1
 
 ## Studied skills and sources
 

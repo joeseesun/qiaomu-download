@@ -1,6 +1,6 @@
 {
   "name": "qiaomu-download",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "owner": "向阳乔木",
   "updated_at": "2026-09-19",
   "status": "release-candidate",
@@ -17,7 +17,7 @@
     "target_users": ["Qiaomu operator", "public skill installer"],
     "inputs": ["explicit download or save intent plus one HTTPS URL", "optional quality, subtitle language, cookie, and output preferences"],
     "outputs": ["verified video or MP3", "downloaded subtitles", "structured metadata"],
-    "exclusions": ["DRM bypass", "access-control bypass", "unbounded playlists", "silent credential export", "WeChat UI automation"]
+    "exclusions": ["DRM bypass", "access-control bypass", "unbounded playlists", "silent credential export", "WeChat UI automation", "Xiaohongshu UI automation", "automated login CAPTCHA or security verification"]
   },
   "qiaomu_defaults": {
     "copyright": "Copyright (c) 向阳乔木",

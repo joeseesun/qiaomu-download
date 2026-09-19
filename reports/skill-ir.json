@@ -3,7 +3,7 @@
   "generated_at": "2026-09-19",
   "package": {
     "name": "qiaomu-download",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "owner": "向阳乔木",
     "maturity_tier": "governed",
     "lifecycle_stage": "production-candidate",
@@ -13,7 +13,7 @@
     "job_to_be_done": "Detect and download media when the user expresses download intent and supplies an HTTPS URL, without requiring the word video.",
     "inputs": ["download or save intent plus one HTTPS URL", "bounded output preferences"],
     "outputs": ["verified media", "subtitles", "metadata"],
-    "exclusions": ["DRM bypass", "playlists", "WeChat UI automation"]
+    "exclusions": ["DRM bypass", "playlists", "WeChat UI automation", "Xiaohongshu UI automation", "automated CAPTCHA or security verification"]
   },
   "triggers": {
     "should_trigger": 10,
