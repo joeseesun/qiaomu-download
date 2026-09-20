@@ -1,10 +1,10 @@
 {
   "ok": true,
-  "total": 22,
-  "passed": 22,
+  "total": 24,
+  "passed": 24,
   "summary": {
-    "total": 22,
-    "passed": 22
+    "total": 24,
+    "passed": 24
   },
   "missing_description_terms": [],
   "results": [
@@ -86,6 +86,13 @@
       "passed": true
     },
     {
+      "bucket": "should_trigger",
+      "text": "下载这首 https://open.spotify.com/track/4cOdK2wGLETKBW3PvgPWqT",
+      "expected": true,
+      "predicted": true,
+      "passed": true
+    },
+    {
       "bucket": "should_not_trigger",
       "text": "https://x.com/user/status/123",
       "expected": false,
@@ -151,6 +158,13 @@
     {
       "bucket": "near_neighbor",
       "text": "下载这张图片 https://example.com/cover.jpg",
+      "expected": false,
+      "predicted": false,
+      "passed": true
+    },
+    {
+      "bucket": "near_neighbor",
+      "text": "我正在 Spotify 听歌，推荐类似歌曲",
       "expected": false,
       "predicted": false,
       "passed": true

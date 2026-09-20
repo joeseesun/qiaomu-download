@@ -1,6 +1,6 @@
 # Prior-art research
 
-Research date: 2026-09-19. Automated discovery produced 72 candidate families in `prior-art-candidates.json`; the following sources were inspected directly.
+Research dates: 2026-09-19 and 2026-09-20. Automated discovery produced 72 candidate families in `prior-art-candidates.json`; Spotify follow-up research inspected current GitHub source and releases directly.
 
 ## Sources studied
 
@@ -10,6 +10,8 @@ Research date: 2026-09-19. Automated discovery produced 72 candidate families in
 4. **yutto-dev/yutto** — Bilibili specialist showing the value of platform-specific depth, including collections, codecs and login-sensitive quality. It is retained as an escalation reference rather than a second runtime dependency.
 5. **qiaomu-wx-video 0.1.2-local (local working tree)** — owned specialist implementation with WeChat URL validation, fixed resolver fallback, local feed capture, signed URL preservation, decrypt, full-decode verification, pinned backend installation and proxy rollback rules.
 6. **yt-dlp official README, installation wiki and FAQ** — authoritative basis for extractor breadth, browser Cookie support, package-manager update routes and the fact that site support must be tested dynamically.
+7. **spotDL/spotify-downloader 4.5.2** — active MIT project with 26k+ GitHub stars. It separates Spotify metadata from YouTube audio, searches by ISRC when available, scores title/artist/album/duration and uses yt-dlp for transfer. Its local metadata request stalled in a real 2026-09-20 probe, so it is retained as algorithmic prior art rather than a runtime dependency.
+8. **Shabinder/SpotiFlyer** — older metadata-to-audio architecture using JioSaavn and YouTube Music fallbacks. The repository states that it is no longer updated, so its provider stack was rejected.
 
 ## Candidate-specific lessons retained
 
@@ -19,6 +21,8 @@ Research date: 2026-09-19. Automated discovery produced 72 candidate families in
 - From yutto: describe Bilibili entitlement and quality limits honestly; keep a specialist escalation path.
 - From qiaomu-wx-video: retain local-first capture, explicit resolver consent, complete signed URLs, real codec verification, one manual user handoff and strict no-WeChat-UI automation.
 - From official yt-dlp: make extractor capability dynamic, support `--cookies-from-browser`, and respect installation provenance when updating.
+- From spotDL: separate metadata and audio provenance, use multiple match signals, reject weak matches, and expose the selected public source.
+- From SpotiFlyer: retain the provider-adapter idea, but reject its abandoned unofficial APIs and proxy dependencies.
 
 ## Rejected
 
@@ -29,6 +33,8 @@ Research date: 2026-09-19. Automated discovery produced 72 candidate families in
 - DRM, paywall or access-control bypass.
 - WeChat UI automation; the specialist implementation is embedded behind the universal entrypoint instead of requiring a second installed Skill.
 - Depending on both yt-dlp and yutto in the default path; this would double update and authentication surface.
+- Installing spotDL as a nested runtime. A real metadata probe hung before candidate search, while Spotify public Open Graph metadata and yt-dlp search completed reliably on this host.
+- Treating Spotify Premium cache as a download source; the adapter does not read or decrypt Spotify client data.
 
 ## Invented
 
@@ -37,6 +43,7 @@ Research date: 2026-09-19. Automated discovery produced 72 candidate families in
 - Public-first Cookie fallback with visible provenance in the JSON result.
 - A manager-aware updater spanning Homebrew, pipx, uv and official self-update.
 - A single JSON contract shared by WeChat Channels, YouTube, Bilibili, X and generic extractors.
+- A dependency-light Spotify track adapter that reads public metadata, searches ten YouTube candidates, scores title/artist/duration/verification/popularity/variant terms, rejects low confidence, writes Spotify tags and reports both provenance layers.
 
 ## Claim status
 
@@ -52,3 +59,6 @@ Research date: 2026-09-19. Automated discovery produced 72 candidate families in
 - https://github.com/lwmxiaobei/yt-dlp-skill
 - https://github.com/MapleShaw/yt-dlp-downloader-skill
 - https://github.com/yutto-dev/yutto
+- https://github.com/spotDL/spotify-downloader
+- https://github.com/spotDL/spotify-downloader/releases/tag/v4.5.2
+- https://github.com/Shabinder/SpotiFlyer

@@ -1,7 +1,7 @@
 interface:
   display_name: "乔木通用视频下载"
-  short_description: "说“下载这个”加 URL，即可探测并下载在线视频"
-  default_prompt: "Use $qiaomu-download whenever I express download/save intent and provide an HTTPS URL, even when I do not say video. Treat phrases such as 下载这个, 保存这个, 把这个下载下来, and download this plus a URL as sufficient activation. Do not auto-download a bare URL without download intent, or requests for webpages, PDFs, images, uploads, summaries, or editing. For weixin.qq.com/sph links, use the bundled WeChat adapter through scripts/download.py; do not require qiaomu-wx-video. Prefer an already connected local backend. If the result is manual_action_required, ask me once to manually reopen and play the video, then retry with --wait-page and finish automatically. Never use Computer Use, Accessibility, AppleScript, browser automation, or any other UI tool on WeChat. Use --wechat-online allowed only after explicit consent to send the public share URL to the fixed resolver. For other sites, run doctor --upgrade, use yt-dlp public extraction first and at most one local-browser-cookie fallback. Before verification-prone sites, briefly state that no UI automation will be used and that login/CAPTCHA/security verification is manual. Keep playlists and overwrites disabled, require codec/media verification, and return absolute paths."
+  short_description: "说“下载这个”加 URL，即可下载视频或 Spotify 单曲"
+  default_prompt: "Use $qiaomu-download whenever I express download/save intent and provide an HTTPS URL, even when I do not say video or music. Treat phrases such as 下载这个, 保存这个, 把这个下载下来, and download this plus a URL as sufficient activation. Do not auto-download a bare URL without download intent, or requests for webpages, PDFs, images, uploads, summaries, or editing. Route open.spotify.com/track links to the embedded Spotify adapter: read public metadata, score YouTube candidates, reject low-confidence matches, download one MP3, write Spotify tags, and report both metadata and audio sources; never extract Spotify cache or bypass DRM. Reject automatic Spotify collections until a bounded batch is explicit. For weixin.qq.com/sph links, use the bundled WeChat adapter through scripts/download.py; do not require qiaomu-wx-video. Prefer an already connected local backend. If the result is manual_action_required, ask me once to manually reopen and play the video, then retry with --wait-page and finish automatically. Never use Computer Use, Accessibility, AppleScript, browser automation, or any other UI tool on WeChat. Use --wechat-online allowed only after explicit consent to send the public share URL to the fixed resolver. For other sites, run doctor --upgrade, use yt-dlp public extraction first and at most one local-browser-cookie fallback. Before verification-prone sites, briefly state that no UI automation will be used and that login/CAPTCHA/security verification is manual. Keep playlists and overwrites disabled, require codec/media verification, and return absolute paths."
   examples:
     - "下载这个 X 视频：https://x.com/user/status/123"
     - "下载这个：https://v.douyin.com/example"
@@ -10,6 +10,7 @@ interface:
     - "提取这个 YouTube 视频的 MP3"
     - "下载这个视频的中英文字幕"
     - "下载这个视频号：https://weixin.qq.com/sph/example"
+    - "下载这首：https://open.spotify.com/track/example"
 compatibility:
   canonical_format: "agent-skills"
   adapter_targets:
@@ -22,7 +23,7 @@ compatibility:
     paths: []
   execution:
     context: "local-machine"
-    shell: "python3 plus yt-dlp, ffmpeg, ffprobe, and the bundled WeChat adapter"
+    shell: "python3 plus yt-dlp, ffmpeg, ffprobe, and bundled WeChat/Spotify adapters"
   trust:
     source_tier: "local-installed-cli"
     remote_inline_execution: "forbid"
@@ -30,9 +31,9 @@ compatibility:
     generated_public_claims: "evidence-bound"
     verification_prone_sites: "notice-then-url-only-no-ui-automation"
   permissions:
-    network: "target media provider, official yt-dlp release API, locked WeChat backend release, and explicitly authorized fixed WeChat resolver"
+    network: "target media provider, Spotify public metadata, YouTube search/media, official yt-dlp release API, locked WeChat backend release, and explicitly authorized fixed WeChat resolver"
     file_write: "user-selected output directory"
-    subprocess: "yt-dlp, ffmpeg, ffprobe, embedded WeChat scripts, optional locked backend, and detected package manager for upgrades"
+    subprocess: "yt-dlp, ffmpeg, ffprobe, embedded WeChat and Spotify scripts, optional locked backend, and detected package manager for upgrades"
     interactive: "may be required by the OS when a browser cookie store is protected"
   degradation:
     no_network: "cannot inspect or download"
@@ -48,6 +49,7 @@ gates:
     - "ffprobe verification"
     - "absolute output paths"
     - "official stable yt-dlp update check"
+    - "Spotify public metadata with scored single-track source matching"
     - "embedded WeChat Channels adapter without UI automation"
     - "explicit consent before sending a WeChat share URL to a fixed resolver"
     - "Xiaohongshu and verification-prone sites use no UI automation"

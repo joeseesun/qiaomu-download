@@ -1,6 +1,6 @@
 # 内置视频号适配器
 
-`qiaomu-download` 1.2.0 已把原 `qiaomu-wx-video` 的验证、在线解析、本地 feed 捕获、媒体下载、解密、编码验证和后端安装能力收入同一安装包。实现位于 `scripts/wechat/`，统一入口为 `scripts/download.py`。
+`qiaomu-download` 已把原 `qiaomu-wx-video` 的验证、在线解析、本地 feed 捕获、媒体下载、解密、编码验证和后端安装能力收入同一安装包。实现位于 `scripts/wechat/`，统一入口为 `scripts/download.py`。
 
 ## 快速路径
 

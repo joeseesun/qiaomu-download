@@ -25,7 +25,7 @@ import urllib.parse
 import urllib.request
 from urllib.parse import urlsplit, urlunsplit
 
-VERSION = "1.2.0"
+VERSION = "1.3.0"
 YT_DLP_RELEASE_API = "https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest"
 YT_DLP_RELEASE_LATEST = "https://github.com/yt-dlp/yt-dlp/releases/latest"
 MEDIA_SUFFIXES = {".mp4", ".mkv", ".webm", ".mov", ".m4a", ".mp3", ".opus", ".ogg", ".wav"}
@@ -49,9 +49,10 @@ KNOWN_PLATFORMS = {
     "youtube.com": "YouTube", "youtu.be": "YouTube", "bilibili.com": "Bilibili",
     "b23.tv": "Bilibili", "x.com": "X", "twitter.com": "X", "vimeo.com": "Vimeo",
     "tiktok.com": "TikTok", "instagram.com": "Instagram", "facebook.com": "Facebook",
-    "twitch.tv": "Twitch", "reddit.com": "Reddit",
+    "twitch.tv": "Twitch", "reddit.com": "Reddit", "open.spotify.com": "Spotify",
 }
 WECHAT_ADAPTER = Path(__file__).with_name("wechat_adapter.py")
+SPOTIFY_ADAPTER = Path(__file__).with_name("spotify_adapter.py")
 
 
 class SkillError(RuntimeError):
@@ -169,6 +170,39 @@ def platform_name(url: str) -> str:
 def is_wechat_channels_url(url: str) -> bool:
     parsed = urlsplit(url)
     return (parsed.hostname or "").rstrip(".").lower() == "weixin.qq.com" and parsed.path.startswith("/sph/")
+
+
+def is_spotify_url(url: str) -> bool:
+    return (urlsplit(url).hostname or "").rstrip(".").lower() == "open.spotify.com"
+
+
+def run_spotify_adapter(url: str, output_dir: Path, timeout: int) -> dict[str, Any]:
+    if not SPOTIFY_ADAPTER.is_file():
+        raise SkillError("dependency", "embedded Spotify adapter is missing")
+    command = [sys.executable, str(SPOTIFY_ADAPTER), "download", url, "--dir", str(output_dir),
+               "--timeout", str(timeout)]
+    try:
+        completed = subprocess.run(command, check=False, capture_output=True, text=True, timeout=timeout + 30)
+    except subprocess.TimeoutExpired as exc:
+        raise SkillError("spotify_download", f"Spotify adapter timed out after {timeout}s") from exc
+    try:
+        payload = json.loads(completed.stdout)
+    except json.JSONDecodeError as exc:
+        raise SkillError("spotify_download", "Spotify adapter returned invalid JSON") from exc
+    if not isinstance(payload, dict):
+        raise SkillError("spotify_download", "Spotify adapter returned a non-object result")
+    return payload
+
+
+def spotify_doctor() -> dict[str, Any]:
+    if not SPOTIFY_ADAPTER.is_file():
+        return {"ok": False, "adapter": "spotify-spotdl", "error": "adapter missing"}
+    completed = subprocess.run([sys.executable, str(SPOTIFY_ADAPTER), "doctor"], check=False,
+                               capture_output=True, text=True, timeout=30)
+    try:
+        return json.loads(completed.stdout)
+    except json.JSONDecodeError:
+        return {"ok": False, "adapter": "spotify-spotdl", "error": "doctor returned invalid JSON"}
 
 
 def run_wechat_adapter(url: str, output_dir: Path, timeout: int, online: str,
@@ -311,7 +345,7 @@ def doctor(upgrade: bool, timeout: int) -> dict[str, Any]:
         "latest_stable_version": latest, "outdated": outdated, "manager": manager,
         "upgrade_requested": upgrade, "upgraded": upgraded},
         "ffmpeg_version": optional_tool_version("ffmpeg"), "ffprobe_version": optional_tool_version("ffprobe"),
-        "wechat_channels": wechat_doctor()}
+        "wechat_channels": wechat_doctor(), "spotify": spotify_doctor()}
 
 
 def load_metadata_once(url: str, browser: str | None, timeout: int) -> dict[str, Any]:
@@ -518,6 +552,11 @@ def main() -> None:
                               "url": url, "wechat_channels": wechat_doctor(url), "ui_automation_used": False}
                 else:
                     raise SkillError("unsupported", f"{args.command} is not supported for WeChat Channels links")
+            elif is_spotify_url(url):
+                if args.command in {"download", "audio"}:
+                    result = run_spotify_adapter(url, prepare_output_dir(args.output_dir), args.timeout)
+                else:
+                    raise SkillError("unsupported", f"{args.command} is not supported for Spotify links; use download or audio")
             elif args.command == "info":
                 metadata, browser, warnings = load_metadata(url, args.cookies_from_browser, args.timeout)
                 result = {"ok": True, "command": "info", **metadata_summary(metadata, url),

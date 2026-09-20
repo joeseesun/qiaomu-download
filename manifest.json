@@ -1,8 +1,8 @@
 {
   "name": "qiaomu-download",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "owner": "向阳乔木",
-  "updated_at": "2026-09-19",
+  "updated_at": "2026-09-20",
   "status": "release-candidate",
   "maturity_tier": "governed",
   "lifecycle_stage": "production-candidate",
@@ -15,10 +15,12 @@
     "ffmpeg",
     "ffprobe",
     "embedded WeChat Channels adapter",
+    "embedded Spotify public-metadata matcher",
     "optional locked wx_channels_download backend"
   ],
   "platforms": [
     "wechat-channels",
+    "spotify-track",
     "youtube",
     "bilibili",
     "x",
@@ -35,7 +37,7 @@
     "generic-yt-dlp"
   ],
   "intent": {
-    "job_to_be_done": "When the user expresses download intent and provides an HTTPS URL, dispatch WeChat Channels to the embedded governed adapter or use yt-dlp for other sites, then return verified local artifacts.",
+    "job_to_be_done": "When the user expresses download intent and provides an HTTPS URL, dispatch WeChat Channels and Spotify tracks to governed embedded adapters or use yt-dlp for other sites, then return verified local artifacts.",
     "target_users": [
       "Qiaomu operator",
       "public skill installer"
@@ -48,7 +50,8 @@
       "verified video or MP3",
       "downloaded subtitles",
       "structured metadata",
-      "structured WeChat manual/setup state when a local connection is required"
+      "structured WeChat manual/setup state when a local connection is required",
+      "Spotify metadata-to-public-audio match evidence"
     ],
     "exclusions": [
       "DRM bypass",
@@ -59,7 +62,9 @@
       "automated login CAPTCHA or security verification",
       "WeChat UI automation",
       "silent sharing of WeChat URLs with third parties",
-      "silent certificate trust or proxy mutation"
+      "silent certificate trust or proxy mutation",
+      "Spotify DRM or local cache extraction",
+      "unbounded Spotify album or playlist download"
     ]
   },
   "qiaomu_defaults": {
@@ -74,6 +79,7 @@
     "clean local install proof",
     "YouTube Bilibili and X provider probes",
     "verified X media download proof",
+    "Spotify public metadata and scored-match tests",
     "human security review",
     "embedded WeChat adapter unit tests",
     "WeChat no-UI and explicit-resolver-consent contract",
@@ -84,6 +90,12 @@
       "name": "yt-dlp",
       "source": "https://github.com/yt-dlp/yt-dlp",
       "role": "general extractor runtime"
+    },
+    {
+      "name": "spotDL",
+      "source": "https://github.com/spotDL/spotify-downloader",
+      "role": "matching-strategy prior art; not a runtime dependency",
+      "license_note": "MIT"
     },
     {
       "name": "wx_channels_download",

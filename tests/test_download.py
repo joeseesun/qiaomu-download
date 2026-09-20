@@ -42,6 +42,8 @@ class DownloadSkillTests(unittest.TestCase):
         self.assertEqual(download.platform_name("https://m.youtube.com/watch?v=x"), "YouTube")
         self.assertEqual(download.platform_name("https://www.bilibili.com/video/x"), "Bilibili")
         self.assertEqual(download.platform_name("https://x.com/a/status/1"), "X")
+        self.assertEqual(download.platform_name("https://open.spotify.com/track/abc"), "Spotify")
+        self.assertTrue(download.is_spotify_url("https://open.spotify.com/track/abc"))
         self.assertEqual(download.platform_name("https://example.com/video"), "yt-dlp generic extractor")
 
     def test_quality_presets_fall_back_when_cap_is_unavailable(self) -> None:
@@ -108,6 +110,15 @@ class DownloadSkillTests(unittest.TestCase):
         with patch.object(download.subprocess, "run", return_value=completed):
             result = download.run_wechat_adapter(
                 "https://weixin.qq.com/sph/abc", Path("/tmp"), 30, "never", 0, False
+            )
+        self.assertEqual(result, payload)
+
+    def test_spotify_adapter_result_is_forwarded(self) -> None:
+        payload = {"ok": True, "platform": "Spotify", "files": [{"path": "/tmp/song.mp3"}]}
+        completed = download.subprocess.CompletedProcess([], 0, json.dumps(payload), "")
+        with patch.object(download.subprocess, "run", return_value=completed):
+            result = download.run_spotify_adapter(
+                "https://open.spotify.com/track/4cOdK2wGLETKBW3PvgPWqT", Path("/tmp"), 30
             )
         self.assertEqual(result, payload)
 

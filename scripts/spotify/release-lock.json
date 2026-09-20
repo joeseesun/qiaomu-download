@@ -1,0 +1,13 @@
+{
+  "name": "spotDL matching prior art",
+  "version": "4.5.2",
+  "source": "https://github.com/spotDL/spotify-downloader",
+  "release": "https://github.com/spotDL/spotify-downloader/releases/tag/v4.5.2",
+  "license": "MIT",
+  "adopted_mechanisms": [
+    "Spotify metadata is separate from audio sourcing",
+    "candidate scoring uses title, artist and duration",
+    "the selected public source is downloaded with yt-dlp"
+  ],
+  "runtime_dependency": false
+}

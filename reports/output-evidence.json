@@ -1,11 +1,12 @@
 {
   "ok": true,
   "evidence_kind": "provider_backed",
-  "validated_at": "2026-09-19",
+  "validated_at": "2026-09-20",
   "providers": [
     "YouTube",
     "Bilibili",
-    "X/Twitter"
+    "X/Twitter",
+    "Spotify metadata + YouTube match"
   ],
   "cookie_mode": "none",
   "cases": [
@@ -42,6 +43,24 @@
       "metadata_ok": true,
       "width": 512,
       "height": 384
+    },
+    {
+      "provider": "Spotify metadata + YouTube match",
+      "source_url": "https://open.spotify.com/track/6R4jGWPkqmfGHyaLTJekTr",
+      "metadata_ok": true,
+      "candidate_search_ok": true,
+      "selected_audio_source": "https://www.youtube.com/watch?v=828gaktZx9I",
+      "selected_channel": "untitled (halo)",
+      "match_confidence": 94.23,
+      "full_download_rerun": true,
+      "download_ok": true,
+      "spotify_tags_applied": true,
+      "ffprobe_ok": true,
+      "container": "mp3",
+      "audio_codec": "mp3",
+      "audio_bitrate": 128000,
+      "duration_seconds": 239.509,
+      "bytes": 3833219
     }
   ],
   "integration": {

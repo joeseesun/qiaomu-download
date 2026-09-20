@@ -2,7 +2,7 @@
 
 ## 路由与依赖检查
 
-`scripts/download.py` 是所有平台的统一入口。它识别 `weixin.qq.com/sph/*` 后直接调用内置视频号适配器；其他 URL 才进入 yt-dlp 流程。
+`scripts/download.py` 是所有平台的统一入口。它把 `weixin.qq.com/sph/*` 交给视频号适配器，把 `open.spotify.com/track/*` 交给 Spotify 单曲适配器，其他 URL 进入常规 yt-dlp 流程。
 
 每个新下载任务先运行：
 
@@ -20,6 +20,8 @@ python3 scripts/download.py download URL --quality best --dir ~/Downloads
 
 进程输出下载进度到 stderr，最终 JSON 输出到 stdout。完成条件是 JSON 中 `ok` 为 true，且每个文件通过 ffprobe 的流、时长和大小检查。
 
+Spotify 单曲会先读取公开页面元数据，再搜索十个 YouTube 候选。评分同时检查标题、艺人和时长，并加入频道验证、播放量和错误版本惩罚；置信度不足会返回 `match` 错误。专辑与播放列表不会自动展开。
+
 ## 故障恢复
 
 1. `validate`：检查 HTTPS URL，不改动环境。
@@ -29,3 +31,4 @@ python3 scripts/download.py download URL --quality best --dir ~/Downloads
 5. `metadata`：更新 yt-dlp；需要登录时保持浏览器已登录并允许 Cookie 回退。
 6. `download`：检查网络、磁盘空间和站点可用性；同一媒体的并发任务会被锁拒绝。
 7. `verify`：文件未通过 ffprobe，不宣告成功。
+8. `match`：Spotify 候选相似度不足；返回候选匹配失败，不猜测或盲目下载。

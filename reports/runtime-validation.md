@@ -20,3 +20,11 @@ The first X download attempt exposed a vertical-video quality-selector gap. The 
 - The universal entrypoint recognized a synthetic `weixin.qq.com/sph/` URL as WeChat Channels without invoking yt-dlp.
 - Unit coverage verifies structured setup/manual states, explicit online consent, signed-query preservation, nested API errors, minimal metadata retention, no-overwrite behavior, HTTPS-only transport and partial-transfer rejection.
 - No live WeChat page was opened or automated during this pass. Existing macOS arm64 H.264/HEVC evidence comes from the source specialist skill; a fresh end-to-end WeChat download is missing evidence for this integration branch.
+
+## v1.3.0 Spotify validation
+
+- spotDL 4.5.2 was inspected as current prior art. Its Spotify metadata request did not progress within 30 seconds on this host, so the installed test environment was removed and spotDL was not retained as a runtime dependency.
+- Spotify's public track page returned title, artist, album, year, duration and artwork without login for `easy rider` (`6R4jGWPkqmfGHyaLTJekTr`).
+- yt-dlp returned ten YouTube candidates. The adapter filtered weak matches and selected the artist-channel official video `828gaktZx9I` with confidence 94.23.
+- Full isolated download passed: MP3, 3,833,219 bytes, 128 kbps, 239.509 s; Spotify title/artist/album tags were applied and ffprobe passed. The temporary test artifact was removed after evidence capture.
+- Unit tests cover URL normalization, collection rejection, strong exact matches, variant/duration penalties and universal-dispatch forwarding.

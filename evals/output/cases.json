@@ -21,6 +21,11 @@
       "expect": "embedded adapter returns verified files or a structured manual/setup state without UI automation"
     },
     {
+      "id": "spotify-track-match",
+      "input": "Public open.spotify.com/track URL",
+      "expect": "public Spotify metadata, one scored YouTube source, disclosed provenance, and verified MP3 or a precise low-confidence error"
+    },
+    {
       "id": "verified-download",
       "input": "Download fixture",
       "expect": "absolute file path with ffprobe evidence"

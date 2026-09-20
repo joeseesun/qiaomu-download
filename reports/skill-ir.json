@@ -1,16 +1,16 @@
 {
   "schema_version": "2.0.0-qiaomu-lite",
-  "generated_at": "2026-09-19",
+  "generated_at": "2026-09-20",
   "package": {
     "name": "qiaomu-download",
-    "version": "1.2.0",
+    "version": "1.3.0",
     "owner": "向阳乔木",
     "maturity_tier": "governed",
     "lifecycle_stage": "production-candidate",
     "upstream_inspiration": "https://github.com/yt-dlp/yt-dlp"
   },
   "intent": {
-    "job_to_be_done": "Dispatch an explicit media download request through one entrypoint, including a bundled governed WeChat Channels path, and return verified local artifacts.",
+    "job_to_be_done": "Dispatch an explicit media download request through one entrypoint, including governed WeChat Channels and Spotify track paths, and return verified local artifacts with provenance.",
     "inputs": [
       "download or save intent plus one HTTPS URL",
       "bounded output preferences"
@@ -19,25 +19,28 @@
       "verified media",
       "subtitles",
       "metadata",
-      "structured WeChat setup/manual-action states"
+      "structured WeChat setup/manual-action states",
+      "Spotify metadata-to-public-audio match evidence"
     ],
     "exclusions": [
       "DRM bypass",
       "playlists",
       "WeChat UI automation",
       "Xiaohongshu UI automation",
-      "automated CAPTCHA or security verification"
+      "automated CAPTCHA or security verification",
+      "Spotify DRM or cache extraction",
+      "unbounded Spotify collections"
     ]
   },
   "triggers": {
-    "should_trigger": 10,
+    "should_trigger": 12,
     "should_not_trigger": 7,
     "near_neighbor": 5
   },
   "workflow": {
     "compact_workflow": [
       "classify URL",
-      "embedded WeChat adapter or yt-dlp doctor",
+      "embedded WeChat or Spotify adapter, or yt-dlp doctor",
       "resolve or capture",
       "download",
       "codec/media verification",

@@ -1,6 +1,6 @@
 # qiaomu-download
 
-> 对 Agent 说一句 **“下载这个：URL”**，它会识别页面里的视频、更新下载引擎、保存最高可用画质，并验证文件真的能播放。
+> 对 Agent 说一句 **“下载这个：URL”**，它会识别页面里的视频或 Spotify 单曲、更新下载引擎、保存媒体，并验证文件真的能播放。
 
 [![Release](https://img.shields.io/github/v/release/joeseesun/qiaomu-download?style=flat-square)](https://github.com/joeseesun/qiaomu-download/releases)
 [![License](https://img.shields.io/github/license/joeseesun/qiaomu-download?style=flat-square)](LICENSE)
@@ -29,6 +29,7 @@ Agent：下载完成
 - **保护已有文件**：默认单链接、禁止播放列表扩张、禁止覆盖、重复任务加锁。
 - **进度可见**：持续显示下载、合并和验证进度，完成后返回可点击的绝对路径。
 - **视频号完整内置**：同一个安装包包含视频号预检、在线解析、本地捕获、下载、解密、编码验证和后端安装器，不需要另装 Skill。
+- **Spotify 单曲匹配**：读取公开曲目信息，评分并锁定一个公开视频音源，写入 Spotify 标题、艺人和专辑标签；不读取 Spotify 缓存或绕过 DRM。
 - **微信和小红书更克制**：不使用 Computer Use 或 UI 自动化操作微信、小红书客户端及其内嵌页面。
 - **风控平台先提醒**：遇到小红书、抖音、TikTok、Instagram、Facebook、微博等平台，先说明只做链接解析；登录、验证码和安全验证始终由用户手动完成。
 
@@ -54,6 +55,7 @@ Agent：下载完成
 | Pinterest | ✅ extractor | 视频 Pin 与合集 |
 | LinkedIn | ✅ extractor | 普通视频、活动、课程；部分内容需要登录 |
 | SoundCloud | ✅ extractor | 音频、歌单、用户页面 |
+| Spotify 单曲 | ✅ 内置适配器 | Spotify 供元数据，YouTube 供音频；输出匹配来源与置信度，不下载 Spotify 加密流 |
 | Dailymotion / VK | ✅ extractor | 普通视频与部分集合 |
 | 其他 HTTPS 页面 | 🔎 动态探测 | yt-dlp 能识别媒体就下载，否则返回准确错误 |
 | 微信视频号 | ✅ 内置适配器 | 本地连接优先；必要时只让用户手动播放一次；在线解析需先同意发送分享 URL |
@@ -117,6 +119,7 @@ download this https://www.tiktok.com/@user/video/...
 
 ```text
 把这个 YouTube 视频提取成 MP3：https://youtu.be/...
+下载这首：https://open.spotify.com/track/...
 ```
 
 ### 下载字幕
@@ -141,6 +144,7 @@ download this https://www.tiktok.com/@user/video/...
 | “总结这个 YouTube 视频” | 不触发下载 Skill |
 | “下载这张图片 / PDF / 网页” | 不触发视频下载 Skill |
 | “下载这个视频号：URL” | 触发内置视频号适配器 |
+| “下载这首 Spotify：URL” | 触发内置单曲匹配器，输出经过验证的 MP3 |
 
 ## 自动更新机制
 
@@ -189,6 +193,9 @@ python3 scripts/download.py download 'https://www.bilibili.com/video/...'
 
 # 下载微信视频号（内置能力）
 python3 scripts/download.py download 'https://weixin.qq.com/sph/...'
+
+# 下载 Spotify 单曲（Spotify 元数据 + 公开 YouTube 音频匹配）
+python3 scripts/download.py download 'https://open.spotify.com/track/...'
 
 # 限制清晰度
 python3 scripts/download.py download URL --quality 1080p
@@ -250,6 +257,12 @@ python3 scripts/download.py download 'https://weixin.qq.com/sph/...'
 ```
 
 已有本地连接时会自动下载。返回 `manual_action_required` 时，由用户手动重新打开并播放一次，然后 Agent 用 `--wait-page 90` 继续。Agent 永远不点击、播放或刷新微信。若用户明确同意把本次公开分享 URL 发给固定解析器，可以添加 `--wechat-online allowed`。完整首次设置和恢复规则见 [`references/wechat-video.md`](references/wechat-video.md)。
+
+### Spotify 链接
+
+当前自动流程只接受 `open.spotify.com/track/...` 单曲链接。它读取无需登录的 Spotify 页面元数据，用标题、艺人、时长、频道验证状态、播放量和版本词惩罚筛选 YouTube 候选；低置信度时停止。Spotify 专辑和播放列表不会自动展开，避免一次请求变成无边界批量下载。
+
+Spotify Premium 的离线缓存仍受 DRM 和客户端规则约束，本 Skill 不读取、不解密。下载结果的音频来源会在 JSON 中明确列出。
 
 ## 验证与发布质量
 
