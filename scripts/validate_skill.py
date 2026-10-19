@@ -45,7 +45,7 @@ def main() -> None:
     adapter = (root / "scripts/wechat_adapter.py").read_text(encoding="utf-8") if (root / "scripts/wechat_adapter.py").exists() else ""
     if "ui_automation_used" not in adapter or "explicit_share_url_consent" not in adapter:
         failures.append("wechat adapter missing no-UI or consent contract")
-    if manifest.get("name") != "qiaomu-download" or manifest.get("version") != "1.3.0":
+    if manifest.get("name") != "qiaomu-download" or manifest.get("version") != "1.3.1":
         failures.append("manifest identity mismatch")
     spotify = (root / "scripts/spotify_adapter.py").read_text(encoding="utf-8") if (root / "scripts/spotify_adapter.py").exists() else ""
     for term in ("match_confidence", "drm_bypass_used", "spotify_login_used", "ytsearch10"):

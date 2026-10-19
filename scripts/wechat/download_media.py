@@ -96,9 +96,16 @@ class HTTPSOnly(urllib.request.HTTPRedirectHandler):
         return super().redirect_request(req, fp, code, msg, headers, newurl)
 
 
+FETCH_UA = ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 '
+            '(KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36')
+
+
 def fetch_bytes(url, path, spec):
-    opener = urllib.request.build_opener(HTTPSOnly())
-    with opener.open(url, timeout=30) as response, path.open('wb') as out:
+    # Capture may own the system proxy. Media requests go directly to the CDN;
+    # do not weaken certificate verification or modify any proxy settings.
+    opener = urllib.request.build_opener(urllib.request.ProxyHandler({}), HTTPSOnly())
+    request = urllib.request.Request(url, headers={'User-Agent': FETCH_UA})
+    with opener.open(request, timeout=60) as response, path.open('wb') as out:
         if response.status != 200:
             raise RuntimeError('unexpected media HTTP status')
         total = int(response.headers.get('Content-Length') or 0)
@@ -154,15 +161,47 @@ def publish(temp, output, stem):
     raise RuntimeError('too many existing filenames')
 
 
+def find_decrypt_backend(configured):
+    """Probe the configured binary, then only our pinned, already installed copy."""
+    probes = [str(configured)]
+    home = Path(os.environ.get('QIAOMU_WX_VIDEO_HOME', Path.home() / '.local/share/qiaomu-wx-video'))
+    try:
+        lock = json.loads(Path(__file__).with_name('release-lock.json').read_text())
+        directory = home / 'backend' / lock['tag']
+        installed = json.loads((directory / '.qiaomu-install.json').read_text())
+        asset = lock['assets'].get(installed.get('platform'), {})
+        if (installed.get('tag') == lock['tag'] and asset.get('sha256')
+                and installed.get('archive_sha256') == asset['sha256']):
+            name = 'wx_video_download.exe' if installed['platform'].startswith('windows-') else 'wx_video_download'
+            fallback = directory / name
+            if fallback.is_file() and str(fallback) not in probes:
+                probes.append(str(fallback))
+    except (OSError, ValueError, KeyError, TypeError):
+        pass
+    for executable in probes:
+        try:
+            result = subprocess.run([executable, 'decrypt', '--help'],
+                                    capture_output=True, text=True, timeout=15)
+        except (OSError, subprocess.TimeoutExpired):
+            continue
+        help_text = result.stdout + result.stderr
+        if result.returncode == 0 and '--filepath' in help_text and '--key' in help_text:
+            return executable
+    return None
+
+
 def candidate(media, spec, args):
+    key = int(media.get('decodeKey') or 0)
+    decrypt_backend = find_decrypt_backend(str(args.backend)) if key else None
+    if key and not decrypt_backend:
+        raise RuntimeError('no installed backend supports decrypt; install the pinned backend')
     fd, name = tempfile.mkstemp(prefix='.wx-download-', suffix='.partial', dir=args.output)
     os.close(fd)
     path = Path(name)
     try:
         fetch_bytes(media_url(media, spec), path, spec)
-        key = int(media.get('decodeKey') or 0)
         if key:
-            command = [str(args.backend), '--config', str(args.config), 'decrypt',
+            command = [decrypt_backend, '--config', str(args.config), 'decrypt',
                        '--filepath', str(path), '--key', str(key)]
             r = subprocess.run(command, capture_output=True, text=True, timeout=120)
             if r.returncode or '解密完成' not in r.stdout:

@@ -3,7 +3,7 @@
   "generated_at": "2026-09-20",
   "package": {
     "name": "qiaomu-download",
-    "version": "1.3.0",
+    "version": "1.3.1",
     "owner": "向阳乔木",
     "maturity_tier": "governed",
     "lifecycle_stage": "production-candidate",
